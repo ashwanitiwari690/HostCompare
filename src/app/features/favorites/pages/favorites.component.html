@@ -1,0 +1,44 @@
+<div class="container page-header">
+  <app-breadcrumb [items]="[{ label: 'Home', path: '/' }, { label: 'Favorites' }]" />
+  <h1>Your Favorites</h1>
+  <p class="text-muted">Providers, guides and comparisons you've saved. Stored locally in your browser.</p>
+</div>
+
+<div class="container favorites-content">
+  @if (hasAnyFavorites()) {
+    @if (favoriteProviders().length) {
+      <section class="favorites-section">
+        <h2>Favorite Providers</h2>
+        <div class="favorites-grid">
+          @for (provider of favoriteProviders(); track provider.id) {
+            <app-provider-card [provider]="provider" />
+          }
+        </div>
+      </section>
+    }
+
+    @if (favoriteComparisons().length) {
+      <section class="favorites-section">
+        <h2>Favorite Comparisons</h2>
+        <div class="favorites-grid">
+          @for (item of favoriteComparisons(); track item.comparison.slug) {
+            <app-comparison-card [comparison]="item.comparison" [providerA]="item.a" [providerB]="item.b" />
+          }
+        </div>
+      </section>
+    }
+
+    @if (favoriteGuides().length) {
+      <section class="favorites-section">
+        <h2>Favorite Guides</h2>
+        <div class="favorites-grid">
+          @for (guide of favoriteGuides(); track guide.slug) {
+            <app-guide-card [guide]="guide" />
+          }
+        </div>
+      </section>
+    }
+  } @else {
+    <app-empty-state icon="heart-outline" title="No favorites yet" description="Tap the heart icon on any provider to save it here for later." />
+  }
+</div>

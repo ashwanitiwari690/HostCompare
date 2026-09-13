@@ -1,0 +1,9 @@
+@if (page(); as page) {
+  <div class="container legal-page">
+    <app-breadcrumb [items]="[{ label: 'Home', path: '/' }, { label: page.title }]" />
+    <h1>{{ page.title }}</h1>
+    <p class="legal-page__updated">Last updated: {{ page.updatedDate }}</p>
+    <p class="legal-page__intro">{{ page.intro }}</p>
+    <app-content-blocks [blocks]="page.content" />
+  </div>
+}

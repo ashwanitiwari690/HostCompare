@@ -1,0 +1,154 @@
+<div class="comp-table-wrap">
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th scope="col" class="comp-table__sticky-col">Provider</th>
+        @for (col of columns(); track col.provider.id) {
+          <th scope="col">
+            <div class="comp-table__provider-head">
+              <div class="comp-table__logo" [style.background]="col.provider.logoColor">{{ col.provider.logoInitials }}</div>
+              <a [routerLink]="['/hosting', col.provider.slug]">{{ col.provider.name }}</a>
+              @if (allowRemove()) {
+                <button type="button" class="comp-table__remove" [attr.aria-label]="'Remove ' + col.provider.name" (click)="remove.emit(col.provider.id)">
+                  <app-icon name="close" [size]="14" />
+                </button>
+              }
+            </div>
+          </th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="comp-table__sticky-col">Starting Price</td>
+        @for (col of columns(); track col.provider.id) {
+          <td [class.is-best]="col.provider.id === bestPriceProviderId()">
+            {{ formatPrice(col.provider, col.provider.startingPrice) }}
+            @if (col.provider.id === bestPriceProviderId()) { <span class="comp-table__badge">Best Price</span> }
+          </td>
+        }
+      </tr>
+      <tr>
+        <td class="comp-table__sticky-col">Renewal Price</td>
+        @for (col of columns(); track col.provider.id) {
+          <td>{{ col.provider.renewalPrice ? formatPrice(col.provider, col.provider.renewalPrice) : '—' }}</td>
+        }
+      </tr>
+      <tr>
+        <td class="comp-table__sticky-col">Storage</td>
+        @for (col of columns(); track col.provider.id) {
+          <td>{{ col.plan?.storage ?? '—' }}</td>
+        }
+      </tr>
+      <tr>
+        <td class="comp-table__sticky-col">Bandwidth</td>
+        @for (col of columns(); track col.provider.id) {
+          <td>{{ col.plan?.bandwidth ?? '—' }}</td>
+        }
+      </tr>
+      <tr>
+        <td class="comp-table__sticky-col">Websites</td>
+        @for (col of columns(); track col.provider.id) {
+          <td>{{ col.plan?.websites ?? '—' }}</td>
+        }
+      </tr>
+      <tr>
+        <td class="comp-table__sticky-col">Free Domain</td>
+        @for (col of columns(); track col.provider.id) {
+          <td><app-icon [name]="col.provider.freeDomain ? 'check' : 'close'" [size]="16" [class.icon-positive]="col.provider.freeDomain" [class.icon-negative]="!col.provider.freeDomain" /></td>
+        }
+      </tr>
+      <tr>
+        <td class="comp-table__sticky-col">Free SSL</td>
+        @for (col of columns(); track col.provider.id) {
+          <td><app-icon [name]="col.provider.freeSsl ? 'check' : 'close'" [size]="16" [class.icon-positive]="col.provider.freeSsl" [class.icon-negative]="!col.provider.freeSsl" /></td>
+        }
+      </tr>
+      <tr>
+        <td class="comp-table__sticky-col">Free CDN</td>
+        @for (col of columns(); track col.provider.id) {
+          <td><app-icon [name]="col.provider.freeCdn ? 'check' : 'close'" [size]="16" [class.icon-positive]="col.provider.freeCdn" [class.icon-negative]="!col.provider.freeCdn" /></td>
+        }
+      </tr>
+      <tr>
+        <td class="comp-table__sticky-col">Backup</td>
+        @for (col of columns(); track col.provider.id) {
+          <td><app-icon [name]="col.provider.freeBackup ? 'check' : 'close'" [size]="16" [class.icon-positive]="col.provider.freeBackup" [class.icon-negative]="!col.provider.freeBackup" /></td>
+        }
+      </tr>
+      <tr>
+        <td class="comp-table__sticky-col">Email</td>
+        @for (col of columns(); track col.provider.id) {
+          <td><app-icon [name]="col.provider.freeEmail ? 'check' : 'close'" [size]="16" [class.icon-positive]="col.provider.freeEmail" [class.icon-negative]="!col.provider.freeEmail" /></td>
+        }
+      </tr>
+      <tr>
+        <td class="comp-table__sticky-col">Support</td>
+        @for (col of columns(); track col.provider.id) {
+          <td>{{ col.provider.supportChannels.join(', ') }}</td>
+        }
+      </tr>
+      <tr>
+        <td class="comp-table__sticky-col">Uptime</td>
+        @for (col of columns(); track col.provider.id) {
+          <td>{{ col.provider.uptimeGuarantee }}</td>
+        }
+      </tr>
+      <tr>
+        <td class="comp-table__sticky-col">Data Centers</td>
+        @for (col of columns(); track col.provider.id) {
+          <td>{{ col.provider.dataCenters.join(', ') }}</td>
+        }
+      </tr>
+      <tr>
+        <td class="comp-table__sticky-col">WordPress</td>
+        @for (col of columns(); track col.provider.id) {
+          <td><app-icon [name]="col.provider.hostingTypes.includes('wordpress') ? 'check' : 'close'" [size]="16" [class.icon-positive]="col.provider.hostingTypes.includes('wordpress')" [class.icon-negative]="!col.provider.hostingTypes.includes('wordpress')" /></td>
+        }
+      </tr>
+      <tr>
+        <td class="comp-table__sticky-col">VPS</td>
+        @for (col of columns(); track col.provider.id) {
+          <td><app-icon [name]="col.provider.hostingTypes.includes('vps') ? 'check' : 'close'" [size]="16" [class.icon-positive]="col.provider.hostingTypes.includes('vps')" [class.icon-negative]="!col.provider.hostingTypes.includes('vps')" /></td>
+        }
+      </tr>
+      <tr>
+        <td class="comp-table__sticky-col">Cloud</td>
+        @for (col of columns(); track col.provider.id) {
+          <td><app-icon [name]="col.provider.hostingTypes.includes('cloud') ? 'check' : 'close'" [size]="16" [class.icon-positive]="col.provider.hostingTypes.includes('cloud')" [class.icon-negative]="!col.provider.hostingTypes.includes('cloud')" /></td>
+        }
+      </tr>
+      <tr>
+        <td class="comp-table__sticky-col">Money-back Guarantee</td>
+        @for (col of columns(); track col.provider.id) {
+          <td>{{ col.provider.moneyBackGuaranteeDays > 0 ? col.provider.moneyBackGuaranteeDays + ' days' : '—' }}</td>
+        }
+      </tr>
+      <tr>
+        <td class="comp-table__sticky-col">Editorial Rating</td>
+        @for (col of columns(); track col.provider.id) {
+          <td [class.is-best]="col.provider.id === bestRatingProviderId()">
+            {{ col.provider.rating.overall.toFixed(1) }}/5
+            @if (col.provider.id === bestRatingProviderId()) { <span class="comp-table__badge">Top Rated</span> }
+          </td>
+        }
+      </tr>
+      <tr>
+        <td class="comp-table__sticky-col">Review &amp; CTA</td>
+        @for (col of columns(); track col.provider.id) {
+          <td>
+            <div class="comp-table__actions">
+              <a [routerLink]="['/hosting', col.provider.slug]" class="btn btn--outline btn--sm">Read Full Review</a>
+              <app-affiliate-button
+                [affiliateUrl]="col.provider.affiliateUrl"
+                [fallbackUrl]="col.provider.websiteUrl"
+                [ctaText]="col.provider.ctaText"
+                size="sm"
+              />
+            </div>
+          </td>
+        }
+      </tr>
+    </tbody>
+  </table>
+</div>

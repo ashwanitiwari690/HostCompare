@@ -1,0 +1,242 @@
+@if (provider(); as provider) {
+  <article class="provider-detail">
+    <header class="provider-hero">
+      <div class="container">
+        <app-breadcrumb
+          [items]="[{ label: 'Home', path: '/' }, { label: 'Hosting', path: '/hosting' }, { label: provider.name }]"
+        />
+
+        <div class="provider-hero__main">
+          <div class="provider-hero__identity">
+            <div class="provider-hero__logo" [style.background]="provider.logoColor">{{ provider.logoInitials }}</div>
+            <div>
+              <h1>{{ provider.name }} Review</h1>
+              <p class="provider-hero__tagline">{{ provider.tagline }}</p>
+              <app-rating-display [value]="provider.rating.overall" label="Editorial rating" />
+            </div>
+          </div>
+
+          <div class="provider-hero__cta card">
+            <div class="provider-hero__price">
+              <span class="value">{{ provider.currency === 'INR' ? '₹' : '' }}{{ provider.startingPrice }}</span>
+              <span class="period">{{ provider.billingPeriod }}</span>
+            </div>
+            @if (provider.introductoryPrice) {
+              <p class="provider-hero__price-note">Introductory price @if (provider.renewalPrice) { — renews at ₹{{ provider.renewalPrice }}{{ provider.billingPeriod }} }</p>
+            }
+            <app-affiliate-button
+              [affiliateUrl]="provider.affiliateUrl"
+              [fallbackUrl]="provider.websiteUrl"
+              [ctaText]="provider.ctaText"
+              size="lg"
+              [showDisclosure]="true"
+            />
+            <div class="provider-hero__cta-actions">
+              <app-compare-button [providerId]="provider.id" [providerName]="provider.name" />
+              <app-favorite-button type="provider" [id]="provider.id" [itemLabel]="provider.name" />
+            </div>
+            <p class="mock-data-note">Sample pricing — updated {{ provider.dataUpdated }}</p>
+          </div>
+        </div>
+
+        <div class="provider-hero__types">
+          @for (type of provider.hostingTypes; track type) {
+            <app-badge variant="primary">{{ type }}</app-badge>
+          }
+        </div>
+      </div>
+    </header>
+
+    <div class="container provider-body">
+      <div class="provider-body__main">
+        <section class="provider-section">
+          <h2>Overview</h2>
+          <p>{{ provider.overview }}</p>
+          @if (review(); as review) {
+            <p class="provider-verdict"><strong>Editorial verdict:</strong> {{ review.verdict }}</p>
+          }
+          @if (provider.editorsNote) {
+            <div class="editors-note"><app-icon name="info" [size]="16" /> <p>{{ provider.editorsNote }}</p></div>
+          }
+        </section>
+
+        <section class="provider-section">
+          <h2>Key Features</h2>
+          <ul class="check-list">
+            @for (feature of provider.keyFeatures; track feature) {
+              <li><app-icon name="check" [size]="16" /> {{ feature }}</li>
+            }
+          </ul>
+        </section>
+
+        <section class="provider-section">
+          <h2>Pros &amp; Cons</h2>
+          <div class="pros-cons">
+            <div class="pros-cons__col pros-cons__col--pros">
+              <h3>Pros</h3>
+              <ul>
+                @for (pro of provider.pros; track pro) { <li>{{ pro }}</li> }
+              </ul>
+            </div>
+            <div class="pros-cons__col pros-cons__col--cons">
+              <h3>Cons</h3>
+              <ul>
+                @for (con of provider.cons; track con) { <li>{{ con }}</li> }
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="provider-section">
+          <h2>Best For &amp; Who Should Avoid It</h2>
+          <div class="pros-cons">
+            <div class="pros-cons__col">
+              <h3>Best For</h3>
+              <ul>
+                @for (item of provider.bestFor; track item) { <li>{{ item }}</li> }
+              </ul>
+            </div>
+            <div class="pros-cons__col">
+              <h3>Who Should Avoid It</h3>
+              <ul>
+                @for (item of provider.avoidIf; track item) { <li>{{ item }}</li> }
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="provider-section" id="pricing">
+          <h2>Hosting Plans &amp; Pricing</h2>
+          @if (plans().length) {
+            <div class="plans-table-wrap">
+              <table class="plans-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Plan</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Storage</th>
+                    <th scope="col">Bandwidth</th>
+                    <th scope="col">Websites</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (plan of plans(); track plan.id) {
+                    <tr [class.is-recommended]="plan.recommended">
+                      <td>
+                        <strong>{{ plan.name }}</strong>
+                        @if (plan.recommended) { <app-badge variant="accent">Recommended</app-badge> }
+                      </td>
+                      <td>
+                        {{ plan.currency === 'INR' ? '₹' : '' }}{{ plan.price }}{{ plan.billingPeriod }}
+                        @if (plan.renewalPrice) { <span class="text-muted">, renews {{ plan.renewalPrice }}</span> }
+                      </td>
+                      <td>{{ plan.storage }}</td>
+                      <td>{{ plan.bandwidth }}</td>
+                      <td>{{ plan.websites }}</td>
+                      <td>
+                        <app-affiliate-button
+                          [affiliateUrl]="plan.affiliateUrl || provider.affiliateUrl"
+                          [fallbackUrl]="provider.websiteUrl"
+                          ctaText="Select"
+                          size="sm"
+                          variant="secondary"
+                        />
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+            <p class="mock-data-note">Sample plan pricing for demonstration — updated {{ provider.dataUpdated }}</p>
+          }
+        </section>
+
+        <app-ad-in-article />
+
+        <section class="provider-section">
+          <h2>Performance</h2>
+          <p>
+            {{ provider.name }} carries an editorial performance rating of {{ provider.rating.performance.toFixed(1) }}/5,
+            backed by an uptime guarantee of {{ provider.uptimeGuarantee }} and data centers in
+            {{ provider.dataCenters.join(', ') }}.
+          </p>
+        </section>
+
+        <section class="provider-section">
+          <h2>Security</h2>
+          <ul class="check-list">
+            @if (provider.freeSsl) { <li><app-icon name="check" [size]="16" /> Free SSL certificate included</li> }
+            @if (provider.freeBackup) { <li><app-icon name="check" [size]="16" /> Backups included</li> }
+            @if (provider.freeCdn) { <li><app-icon name="check" [size]="16" /> Free CDN integration</li> }
+            <li><app-icon name="shield" [size]="16" /> {{ provider.moneyBackGuaranteeDays > 0 ? provider.moneyBackGuaranteeDays + '-day money-back guarantee' : 'Free trial available (see provider for current terms)' }}</li>
+          </ul>
+        </section>
+
+        <section class="provider-section">
+          <h2>Support</h2>
+          <p>
+            {{ provider.name }} offers support via {{ provider.supportChannels.join(', ') }}, with an editorial support
+            rating of {{ provider.rating.support.toFixed(1) }}/5.
+          </p>
+        </section>
+
+        @if (provider.faqs.length) {
+          <section class="provider-section">
+            <h2>Frequently Asked Questions</h2>
+            <app-faq-accordion [items]="provider.faqs" />
+          </section>
+        }
+
+        @if (relatedSections().length) {
+          <section class="provider-section">
+            <h2>Related Content</h2>
+            <app-related-content [sections]="relatedSections()" />
+          </section>
+        }
+      </div>
+
+      <aside class="provider-body__sidebar">
+        <div class="card provider-sidebar-card">
+          <h3>Quick Facts</h3>
+          <dl>
+            @if (provider.founded) { <div><dt>Founded</dt><dd>{{ provider.founded }}</dd></div> }
+            @if (provider.headquarters) { <div><dt>Headquarters</dt><dd>{{ provider.headquarters }}</dd></div> }
+            <div><dt>Money-back guarantee</dt><dd>{{ provider.moneyBackGuaranteeDays }} days</dd></div>
+            <div><dt>Uptime guarantee</dt><dd>{{ provider.uptimeGuarantee }}</dd></div>
+          </dl>
+          <app-affiliate-button
+            [affiliateUrl]="provider.affiliateUrl"
+            [fallbackUrl]="provider.websiteUrl"
+            [ctaText]="provider.ctaText"
+            size="md"
+          />
+        </div>
+
+        @if (relatedProviders().length) {
+          <div class="card provider-sidebar-card">
+            <h3>Related Providers</h3>
+            @for (related of relatedProviders(); track related.id) {
+              <app-provider-card [provider]="related" [showCompare]="false" [showFavorite]="false" />
+            }
+          </div>
+        }
+      </aside>
+    </div>
+
+    <div class="provider-footer-cta">
+      <div class="container provider-footer-cta__inner">
+        <div>
+          <h2>Ready to get started with {{ provider.name }}?</h2>
+          <p>Pricing shown is sample data — always confirm current pricing on the provider's website before purchasing.</p>
+        </div>
+        <app-affiliate-button
+          [affiliateUrl]="provider.affiliateUrl"
+          [fallbackUrl]="provider.websiteUrl"
+          [ctaText]="provider.ctaText"
+          size="lg"
+        />
+      </div>
+    </div>
+  </article>
+}

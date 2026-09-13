@@ -1,0 +1,14 @@
+<div class="container page-header">
+  <app-breadcrumb [items]="[{ label: 'Home', path: '/' }, { label: 'Reviews' }]" />
+  <h1>Hosting Provider Reviews</h1>
+  <p class="text-muted">
+    Independent editorial ratings covering ease of use, performance, support, features and value for money. These are
+    staff editorial ratings, not customer testimonials.
+  </p>
+</div>
+
+<div class="container reviews-grid">
+  @for (item of items(); track item.review.id) {
+    <app-review-card [review]="item.review" [provider]="item.provider" />
+  }
+</div>

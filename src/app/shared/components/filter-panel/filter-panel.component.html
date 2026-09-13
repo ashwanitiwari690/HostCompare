@@ -1,0 +1,67 @@
+<div class="filter-panel">
+  <div class="filter-panel__header">
+    <h2><app-icon name="filter" [size]="18" /> Filters</h2>
+    <button type="button" class="filter-panel__clear" (click)="clearAll.emit()">Clear all</button>
+  </div>
+
+  <div class="filter-panel__group">
+    <h3>Hosting Type</h3>
+    <div class="filter-panel__chips">
+      @for (type of hostingTypes; track type.value) {
+        <button
+          type="button"
+          class="chip"
+          [class.chip--active]="isTypeActive(type.value)"
+          (click)="toggleType(type.value)"
+        >
+          {{ type.label }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <div class="filter-panel__group">
+    <h3>Price</h3>
+    <select (change)="onPriceChange($event)">
+      @for (opt of priceOptions; track opt.label) {
+        <option [value]="opt.value ?? ''" [selected]="filters().maxPrice === opt.value">{{ opt.label }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="filter-panel__group">
+    <h3>Editorial Rating</h3>
+    <select (change)="onRatingChange($event)">
+      @for (opt of ratingOptions; track opt.label) {
+        <option [value]="opt.value ?? ''" [selected]="filters().minRating === opt.value">{{ opt.label }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="filter-panel__group">
+    <h3>Features</h3>
+    <label class="filter-panel__checkbox">
+      <input type="checkbox" [checked]="!!filters().freeDomain" (change)="toggleBooleanFilter('freeDomain')" /> Free Domain
+    </label>
+    <label class="filter-panel__checkbox">
+      <input type="checkbox" [checked]="!!filters().ssl" (change)="toggleBooleanFilter('ssl')" /> Free SSL
+    </label>
+    <label class="filter-panel__checkbox">
+      <input type="checkbox" [checked]="!!filters().backup" (change)="toggleBooleanFilter('backup')" /> Free Backup
+    </label>
+    <label class="filter-panel__checkbox">
+      <input type="checkbox" [checked]="!!filters().email" (change)="toggleBooleanFilter('email')" /> Free Email
+    </label>
+  </div>
+
+  <div class="filter-panel__group filter-panel__sort">
+    <h3>Sort By</h3>
+    <select (change)="onSortChange($event)">
+      @for (opt of sortOptions; track opt.value) {
+        <option [value]="opt.value" [selected]="sort() === opt.value">{{ opt.label }}</option>
+      }
+    </select>
+  </div>
+
+  <p class="filter-panel__count">{{ resultCount() }} providers found</p>
+</div>

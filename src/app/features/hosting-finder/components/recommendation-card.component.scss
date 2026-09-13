@@ -1,0 +1,151 @@
+.rec-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+}
+
+.rec-card__rank {
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.rec-card__head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.rec-card__logo {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.rec-card__head-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.rec-card__head-text h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.rec-card__head-text h3 a {
+  color: var(--color-text);
+}
+
+.rec-card__head-text p {
+  margin: 2px 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.rec-card__score {
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.rec-card__score-value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.rec-card__score-label {
+  font-size: 0.68rem;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+}
+
+.rec-card__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  background: var(--color-surface-alt);
+  border-radius: var(--radius-md);
+  padding: 14px;
+}
+
+.rec-card__stats span {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.rec-card__stats strong {
+  font-size: 0.88rem;
+  color: var(--color-text);
+  text-transform: capitalize;
+}
+
+.rec-card__section h4,
+.rec-card__why h4 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  margin: 0 0 8px;
+}
+
+.rec-card__features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.86rem;
+}
+
+.rec-card__features li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rec-card__features app-icon {
+  color: var(--color-success);
+}
+
+.rec-card__why ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 0.86rem;
+  color: var(--color-text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rec-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+}
+
+.rec-card__actions app-affiliate-button {
+  margin-left: auto;
+}

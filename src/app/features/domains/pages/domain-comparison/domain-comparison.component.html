@@ -1,0 +1,75 @@
+<div class="container page-header">
+  <app-breadcrumb [items]="[{ label: 'Home', path: '/' }, { label: 'Domains', path: '/domains' }, { label: 'Domain Comparison' }]" />
+  <h1>Domain Registrar Comparison</h1>
+  <p class="text-muted">Compare registration, renewal, transfer pricing and features across popular domain registrars.</p>
+</div>
+
+<div class="container domain-comp">
+  <div class="domain-comp__table-wrap">
+    <table class="domain-comp__table">
+      <thead>
+        <tr>
+          <th scope="col" class="sticky-col">Registrar</th>
+          @for (registrar of registrars(); track registrar.id) {
+            <th scope="col">{{ registrar.name }}</th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="sticky-col">Registration</td>
+          @for (registrar of registrars(); track registrar.id) { <td>₹{{ registrar.registrationPriceFrom }}/yr</td> }
+        </tr>
+        <tr>
+          <td class="sticky-col">Renewal</td>
+          @for (registrar of registrars(); track registrar.id) { <td>₹{{ registrar.renewalPriceFrom }}/yr</td> }
+        </tr>
+        <tr>
+          <td class="sticky-col">Transfer</td>
+          @for (registrar of registrars(); track registrar.id) { <td>₹{{ registrar.transferPriceFrom }}</td> }
+        </tr>
+        <tr>
+          <td class="sticky-col">WHOIS Privacy</td>
+          @for (registrar of registrars(); track registrar.id) { <td><app-icon [name]="registrar.whoisPrivacyFree ? 'check' : 'close'" [size]="16" /></td> }
+        </tr>
+        <tr>
+          <td class="sticky-col">DNS Management</td>
+          @for (registrar of registrars(); track registrar.id) { <td><app-icon [name]="registrar.dnsManagement ? 'check' : 'close'" [size]="16" /></td> }
+        </tr>
+        <tr>
+          <td class="sticky-col">Email Forwarding</td>
+          @for (registrar of registrars(); track registrar.id) { <td><app-icon [name]="registrar.emailForwarding ? 'check' : 'close'" [size]="16" /></td> }
+        </tr>
+        <tr>
+          <td class="sticky-col">Subdomains</td>
+          @for (registrar of registrars(); track registrar.id) { <td><app-icon [name]="registrar.unlimitedSubdomains ? 'check' : 'close'" [size]="16" /></td> }
+        </tr>
+        <tr>
+          <td class="sticky-col">Free SSL</td>
+          @for (registrar of registrars(); track registrar.id) { <td><app-icon [name]="registrar.freeSsl ? 'check' : 'close'" [size]="16" /></td> }
+        </tr>
+        <tr>
+          <td class="sticky-col">Website Builder</td>
+          @for (registrar of registrars(); track registrar.id) { <td><app-icon [name]="registrar.websiteBuilder ? 'check' : 'close'" [size]="16" /></td> }
+        </tr>
+        <tr>
+          <td class="sticky-col">Support</td>
+          @for (registrar of registrars(); track registrar.id) { <td>{{ registrar.supportChannels.join(', ') }}</td> }
+        </tr>
+        <tr>
+          <td class="sticky-col">TLDs Supported</td>
+          @for (registrar of registrars(); track registrar.id) { <td>{{ registrar.supportedTlds.length }}+</td> }
+        </tr>
+        <tr>
+          <td class="sticky-col">Visit</td>
+          @for (registrar of registrars(); track registrar.id) {
+            <td>
+              <app-affiliate-button [affiliateUrl]="registrar.affiliateUrl" [fallbackUrl]="registrar.websiteUrl" [ctaText]="registrar.ctaText" size="sm" />
+            </td>
+          }
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="mock-data-note">Sample registrar pricing for demonstration — always confirm current pricing before registering a domain.</p>
+</div>

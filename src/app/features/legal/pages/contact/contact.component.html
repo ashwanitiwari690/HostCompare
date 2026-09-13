@@ -1,0 +1,54 @@
+<div class="container contact-page">
+  <app-breadcrumb [items]="[{ label: 'Home', path: '/' }, { label: 'Contact' }]" />
+  <h1>Contact Us</h1>
+  <p class="text-muted">
+    Questions, corrections, or feedback about a provider listing? Send us a message below.
+  </p>
+
+  @if (!submitted()) {
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="contact-form card">
+      <div class="form-field">
+        <label for="name">Name</label>
+        <input id="name" type="text" formControlName="name" />
+        @if (f.name.invalid && f.name.touched) {
+          <span class="form-error">Please enter your name.</span>
+        }
+      </div>
+
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" />
+        @if (f.email.invalid && f.email.touched) {
+          <span class="form-error">Please enter a valid email address.</span>
+        }
+      </div>
+
+      <div class="form-field">
+        <label for="subject">Subject</label>
+        <input id="subject" type="text" formControlName="subject" />
+        @if (f.subject.invalid && f.subject.touched) {
+          <span class="form-error">Please enter a subject.</span>
+        }
+      </div>
+
+      <div class="form-field">
+        <label for="message">Message</label>
+        <textarea id="message" rows="5" formControlName="message"></textarea>
+        @if (f.message.invalid && f.message.touched) {
+          <span class="form-error">Please enter a message of at least 10 characters.</span>
+        }
+      </div>
+
+      <button type="submit" class="btn btn--primary btn--block">Send Message</button>
+      <p class="contact-form__note">
+        This form is frontend-only for now — messages are not actually transmitted until backend email integration is
+        added.
+      </p>
+    </form>
+  } @else {
+    <div class="contact-success card">
+      <h2>Message received</h2>
+      <p>Thanks for reaching out! (This is a demo confirmation — no message was actually sent to a server.)</p>
+    </div>
+  }
+</div>

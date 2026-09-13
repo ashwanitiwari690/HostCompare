@@ -1,0 +1,63 @@
+<header class="site-header">
+  <div class="site-header__bar container">
+    <a routerLink="/" class="logo" (click)="closeMobileMenu()">
+      <span class="logo__mark">HC</span>
+      <span class="logo__text">HostCompare</span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Primary">
+      @for (link of navLinks; track link.path) {
+        <a [routerLink]="link.path" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: link.path === '/' }">{{
+          link.label
+        }}</a>
+      }
+    </nav>
+
+    <div class="header-actions">
+      <div class="header-actions__search">
+        <app-search-box (search)="onSearch($event)" />
+      </div>
+
+      <a routerLink="/compare" class="icon-btn icon-btn--badge" aria-label="Comparison list">
+        <app-icon name="scale" />
+        @if (compareSelection.count() > 0) {
+          <span class="badge-count">{{ compareSelection.count() }}</span>
+        }
+      </a>
+
+      <button type="button" class="icon-btn" (click)="cycleTheme()" [attr.aria-label]="themeLabel()" [title]="themeLabel()">
+        <app-icon [name]="themeIcon()" />
+      </button>
+
+      <button type="button" class="icon-btn nav-mobile-toggle" (click)="toggleMobileSearch()" aria-label="Search">
+        <app-icon name="search" />
+      </button>
+
+      <button
+        type="button"
+        class="icon-btn nav-mobile-toggle"
+        (click)="toggleMobileMenu()"
+        [attr.aria-expanded]="mobileMenuOpen()"
+        aria-label="Toggle navigation menu"
+      >
+        <app-icon [name]="mobileMenuOpen() ? 'close' : 'menu'" />
+      </button>
+    </div>
+  </div>
+
+  @if (mobileSearchOpen()) {
+    <div class="mobile-search container">
+      <app-search-box (search)="onSearch($event)" />
+    </div>
+  }
+
+  @if (mobileMenuOpen()) {
+    <nav class="nav-mobile" aria-label="Mobile primary">
+      @for (link of navLinks; track link.path) {
+        <a [routerLink]="link.path" (click)="closeMobileMenu()" routerLinkActive="is-active">{{ link.label }}</a>
+      }
+      <a routerLink="/hosting-finder" (click)="closeMobileMenu()" class="nav-mobile__cta">Find My Hosting</a>
+      <a routerLink="/favorites" (click)="closeMobileMenu()">Favorites</a>
+    </nav>
+  }
+</header>

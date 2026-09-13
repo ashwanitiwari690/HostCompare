@@ -1,0 +1,25 @@
+<div class="domain-search">
+  <form class="domain-search__form" (submit)="$event.preventDefault(); search()">
+    <app-icon name="globe" [size]="18" />
+    <input type="text" placeholder="Find your perfect domain name..." [(ngModel)]="query" name="domainQuery" />
+    <button type="submit" class="btn btn--primary">Search</button>
+  </form>
+
+  @if (searched()) {
+    <div class="domain-search__results">
+      @for (result of results(); track result.domain) {
+        <div class="domain-result">
+          <span class="domain-result__name">{{ result.domain }}</span>
+          @if (result.available) {
+            <span class="domain-result__status domain-result__status--available">Available</span>
+            <span class="domain-result__price">₹{{ result.price }}/yr</span>
+            <a routerLink="/domains" class="btn btn--outline btn--sm">Register</a>
+          } @else {
+            <span class="domain-result__status domain-result__status--taken">Taken</span>
+          }
+        </div>
+      }
+    </div>
+    <p class="domain-search__note">Sample availability data for demonstration — not a live WHOIS lookup.</p>
+  }
+</div>

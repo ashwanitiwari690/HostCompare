@@ -1,0 +1,33 @@
+.not-found {
+  text-align: center;
+  padding: 100px 20px;
+  max-width: 480px;
+}
+
+.not-found__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--color-surface-alt);
+  color: var(--color-text-faint);
+  margin-bottom: 20px;
+}
+
+.not-found h1 {
+  margin-bottom: 10px;
+}
+
+.not-found p {
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+}
+
+.not-found__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}

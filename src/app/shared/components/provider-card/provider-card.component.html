@@ -1,0 +1,61 @@
+<article class="provider-card card">
+  @if (rank(); as r) {
+    <span class="provider-card__rank">#{{ r }}</span>
+  }
+
+  @if (showFavorite()) {
+    <div class="provider-card__fav">
+      <app-favorite-button type="provider" [id]="provider().id" [itemLabel]="provider().name" />
+    </div>
+  }
+
+  <div class="provider-card__head">
+    <div class="provider-card__logo" [style.background]="provider().logoColor">{{ provider().logoInitials }}</div>
+    <div>
+      <h3 class="provider-card__name">
+        <a [routerLink]="['/hosting', provider().slug]">{{ provider().name }}</a>
+      </h3>
+      <p class="provider-card__tagline">{{ provider().tagline }}</p>
+    </div>
+  </div>
+
+  <app-rating-display [value]="provider().rating.overall" label="Editorial rating" size="sm" />
+
+  <p class="provider-card__desc">{{ provider().description }}</p>
+
+  <div class="provider-card__types">
+    @for (type of provider().hostingTypes; track type) {
+      <app-badge variant="neutral">{{ type }}</app-badge>
+    }
+  </div>
+
+  <ul class="provider-card__features">
+    @for (feature of provider().keyFeatures.slice(0, 3); track feature) {
+      <li><app-icon name="check" [size]="14" /> {{ feature }}</li>
+    }
+  </ul>
+
+  <div class="provider-card__price">
+    <span class="provider-card__price-value">{{ provider().currency === 'INR' ? '₹' : provider().currency }}{{ provider().startingPrice }}</span>
+    <span class="provider-card__price-period">{{ provider().billingPeriod }}</span>
+    @if (provider().introductoryPrice) {
+      <span class="provider-card__price-note">Introductory price</span>
+    }
+  </div>
+  @if (provider().moneyBackGuaranteeDays > 0) {
+    <p class="provider-card__guarantee"><app-icon name="shield" [size]="14" /> {{ provider().moneyBackGuaranteeDays }}-day money-back guarantee</p>
+  }
+
+  <div class="provider-card__actions">
+    @if (showCompare()) {
+      <app-compare-button [providerId]="provider().id" [providerName]="provider().name" />
+    }
+    <a [routerLink]="['/hosting', provider().slug]" class="btn btn--outline btn--sm">View Review</a>
+    <app-affiliate-button
+      [affiliateUrl]="provider().affiliateUrl"
+      [fallbackUrl]="provider().websiteUrl"
+      [ctaText]="provider().ctaText"
+      size="sm"
+    />
+  </div>
+</article>

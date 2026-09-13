@@ -1,0 +1,45 @@
+<div class="container about-hero">
+  <app-breadcrumb [items]="[{ label: 'Home', path: '/' }, { label: 'About' }]" />
+  <h1>Compare Hosting. Choose Better.</h1>
+  <p>
+    HostCompare is an independent hosting and domain comparison platform. Instead of a single "best hosting" list, we
+    focus on helping you understand the trade-offs between providers so you can make the right call for your specific
+    project, budget and technical comfort.
+  </p>
+</div>
+
+<section class="section section--tight">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__eyebrow">What We Do</span>
+      <h2 class="section__title">Our Approach</h2>
+    </div>
+    <div class="about-values">
+      @for (item of values; track item.title) {
+        <div class="about-value card">
+          <div class="about-value__icon"><app-icon [name]="item.icon" [size]="20" /></div>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container container--faq">
+    <h2>How We Make Money</h2>
+    <p>
+      HostCompare may earn a commission when you purchase through certain links on this site — see our
+      <a routerLink="/affiliate-disclosure">Affiliate Disclosure</a> for details. This never changes an editorial rating
+      or recommendation; providers cannot pay for a better score. The site is also designed to support future
+      advertising (see our <a routerLink="/cookie-policy">Cookie Policy</a>), which will always be clearly labeled as
+      advertising.
+    </p>
+    <h2>Get a Personalized Recommendation</h2>
+    <p>
+      Rather than reading every review on the site, try the <a routerLink="/hosting-finder">Hosting Finder</a> — answer
+      a few questions and get a transparent, scored recommendation you can compare and act on.
+    </p>
+  </div>
+</section>

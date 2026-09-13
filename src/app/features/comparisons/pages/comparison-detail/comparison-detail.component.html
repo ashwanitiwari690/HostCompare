@@ -1,0 +1,143 @@
+@if (comparison(); as comparison) {
+  @if (providerA(); as a) {
+    @if (providerB(); as b) {
+      <article class="comparison-detail">
+        <header class="comparison-hero">
+          <div class="container">
+            <app-breadcrumb
+              [items]="[{ label: 'Home', path: '/' }, { label: 'Compare', path: '/compare' }, { label: comparison.h1 }]"
+            />
+            <div class="comparison-hero__title-row">
+              <h1>{{ comparison.h1 }}</h1>
+              <app-favorite-button type="comparison" [id]="comparison.slug" [itemLabel]="comparison.h1" />
+            </div>
+            <p class="comparison-hero__intro">{{ comparison.introduction }}</p>
+            <div class="comparison-hero__ctas">
+              <app-affiliate-button [affiliateUrl]="a.affiliateUrl" [fallbackUrl]="a.websiteUrl" [ctaText]="'Visit ' + a.name" />
+              <app-affiliate-button [affiliateUrl]="b.affiliateUrl" [fallbackUrl]="b.websiteUrl" [ctaText]="'Visit ' + b.name" variant="outline" />
+            </div>
+            <p class="mock-data-note">Updated {{ comparison.dataUpdated }} — pricing is sample data, verify current pricing before purchase.</p>
+          </div>
+        </header>
+
+        <div class="container comparison-content">
+          <section class="comparison-section">
+            <h2>Quick Comparison</h2>
+            <p class="comparison-verdict">{{ comparison.quickVerdict }}</p>
+            <app-comparison-table [providers]="tableProviders()" [plans]="plansByProvider()" [allowRemove]="false" />
+          </section>
+
+          <section class="comparison-section">
+            <h2>Pricing</h2>
+            <p>{{ comparison.pricingSummary }}</p>
+          </section>
+
+          <section class="comparison-section">
+            <h2>Performance</h2>
+            <p>{{ comparison.performanceSummary }}</p>
+          </section>
+
+          <section class="comparison-section">
+            <h2>Ease of Use</h2>
+            <p>{{ comparison.easeOfUseSummary }}</p>
+          </section>
+
+          <app-ad-in-article />
+
+          <section class="comparison-section">
+            <h2>Support</h2>
+            <p>{{ comparison.supportSummary }}</p>
+          </section>
+
+          <section class="comparison-section">
+            <h2>Security</h2>
+            <p>{{ comparison.securitySummary }}</p>
+          </section>
+
+          <section class="comparison-section">
+            <h2>Features</h2>
+            <p>{{ comparison.featuresSummary }}</p>
+          </section>
+
+          <section class="comparison-section">
+            <h2>Pros &amp; Cons</h2>
+            <div class="comparison-pros-cons">
+              <div class="card">
+                <h3>{{ a.name }}</h3>
+                <h4>Pros</h4>
+                <ul>@for (pro of a.pros; track pro) { <li>{{ pro }}</li> }</ul>
+                <h4>Cons</h4>
+                <ul>@for (con of a.cons; track con) { <li>{{ con }}</li> }</ul>
+              </div>
+              <div class="card">
+                <h3>{{ b.name }}</h3>
+                <h4>Pros</h4>
+                <ul>@for (pro of b.pros; track pro) { <li>{{ pro }}</li> }</ul>
+                <h4>Cons</h4>
+                <ul>@for (con of b.cons; track con) { <li>{{ con }}</li> }</ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="comparison-section">
+            <h2>Best For</h2>
+            <div class="comparison-pros-cons">
+              <div class="card">
+                <h3>{{ a.name }} is best for</h3>
+                <ul>@for (item of comparison.bestForA; track item) { <li>{{ item }}</li> }</ul>
+              </div>
+              <div class="card">
+                <h3>{{ b.name }} is best for</h3>
+                <ul>@for (item of comparison.bestForB; track item) { <li>{{ item }}</li> }</ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="comparison-section">
+            <h2>Who Should Choose {{ a.name }}?</h2>
+            <ul class="check-list">@for (item of comparison.chooseAIf; track item) { <li>{{ item }}</li> }</ul>
+          </section>
+
+          <section class="comparison-section">
+            <h2>Who Should Choose {{ b.name }}?</h2>
+            <ul class="check-list">@for (item of comparison.chooseBIf; track item) { <li>{{ item }}</li> }</ul>
+          </section>
+
+          <section class="comparison-section comparison-summary">
+            <h2>Final Editorial Summary</h2>
+            <p>{{ comparison.finalSummary }}</p>
+          </section>
+
+          @if (comparison.faqs.length) {
+            <section class="comparison-section">
+              <h2>Frequently Asked Questions</h2>
+              <app-faq-accordion [items]="comparison.faqs" />
+            </section>
+          }
+
+          <section class="comparison-section">
+            <h2>Read the Full Reviews</h2>
+            <div class="comparison-review-links">
+              <a [routerLink]="['/hosting', a.slug]" class="btn btn--outline">{{ a.name }} Review</a>
+              <a [routerLink]="['/hosting', b.slug]" class="btn btn--outline">{{ b.name }} Review</a>
+            </div>
+          </section>
+
+          @if (relatedSections().length) {
+            <section class="comparison-section">
+              <h2>Related Content</h2>
+              <app-related-content [sections]="relatedSections()" />
+            </section>
+          }
+        </div>
+
+        <div class="comparison-footer-cta">
+          <div class="container comparison-footer-cta__inner">
+            <app-affiliate-button [affiliateUrl]="a.affiliateUrl" [fallbackUrl]="a.websiteUrl" [ctaText]="'Visit ' + a.name" size="lg" />
+            <app-affiliate-button [affiliateUrl]="b.affiliateUrl" [fallbackUrl]="b.websiteUrl" [ctaText]="'Visit ' + b.name" size="lg" variant="outline" />
+          </div>
+        </div>
+      </article>
+    }
+  }
+}

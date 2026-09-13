@@ -1,0 +1,52 @@
+<div class="container page-header">
+  <app-breadcrumb [items]="[{ label: 'Home', path: '/' }, { label: 'Compare' }]" />
+  <h1>Compare Hosting Providers</h1>
+  <p class="text-muted">
+    Build a custom, side-by-side comparison. Your selection is saved automatically, so you can come back to it later or
+    continue from the Hosting Finder.
+  </p>
+</div>
+
+<div class="container compare-tool">
+  @if (selectedProviders().length) {
+    <div class="compare-tool__toolbar">
+      <div class="compare-tool__add">
+        <select (change)="onAddProviderChange($event)">
+          <option value="">Add a provider…</option>
+          @for (provider of availableToAdd(); track provider.id) {
+            <option [value]="provider.id">{{ provider.name }}</option>
+          }
+        </select>
+        <button type="button" class="btn btn--secondary" (click)="addProvider()">Add</button>
+      </div>
+      <button type="button" class="btn btn--outline" (click)="clearAll()">Clear Comparison</button>
+    </div>
+
+    <app-comparison-table
+      [providers]="selectedProviders()"
+      [plans]="plansByProvider()"
+      (remove)="removeProvider($event)"
+    />
+  } @else {
+    <app-empty-state icon="scale" title="No providers selected yet" description="Add providers from the hosting directory, a provider review, or the Hosting Finder to start comparing.">
+      <div class="compare-tool__empty-actions">
+        <a routerLink="/hosting" class="btn btn--outline">Browse Hosting</a>
+        <a routerLink="/hosting-finder" class="btn btn--primary">Use Hosting Finder</a>
+      </div>
+    </app-empty-state>
+  }
+</div>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__eyebrow">Or Start From a Popular Comparison</span>
+      <h2 class="section__title">Popular Comparisons</h2>
+    </div>
+    <div class="compare-tool__popular">
+      @for (item of popularComparisons(); track item.comparison.slug) {
+        <app-comparison-card [comparison]="item.comparison" [providerA]="item.a" [providerB]="item.b" />
+      }
+    </div>
+  </div>
+</section>

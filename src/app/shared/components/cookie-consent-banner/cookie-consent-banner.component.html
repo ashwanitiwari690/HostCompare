@@ -1,0 +1,36 @@
+@if (!consent.hasDecided()) {
+  <div class="cookie-banner" role="dialog" aria-label="Cookie preferences">
+    @if (!managePreferencesOpen()) {
+      <div class="cookie-banner__content">
+        <p>
+          We use cookies to run this site and, if you allow it, to understand traffic and support advertising. See our
+          <a routerLink="/cookie-policy">Cookie Policy</a> for details.
+        </p>
+        <div class="cookie-banner__actions">
+          <button type="button" class="btn btn--outline" (click)="openPreferences()">Manage Preferences</button>
+          <button type="button" class="btn btn--outline" (click)="rejectNonEssential()">Reject Non-Essential</button>
+          <button type="button" class="btn btn--primary" (click)="acceptAll()">Accept All</button>
+        </div>
+      </div>
+    } @else {
+      <div class="cookie-banner__content">
+        <p class="cookie-banner__title">Manage Cookie Preferences</p>
+        <label class="cookie-banner__option">
+          <input type="checkbox" checked disabled />
+          <span><strong>Necessary</strong> — required for the site to function, always on.</span>
+        </label>
+        <label class="cookie-banner__option">
+          <input type="checkbox" [checked]="analyticsChecked()" (change)="analyticsChecked.set(!analyticsChecked())" />
+          <span><strong>Analytics</strong> — helps us understand how visitors use the site.</span>
+        </label>
+        <label class="cookie-banner__option">
+          <input type="checkbox" [checked]="advertisingChecked()" (change)="advertisingChecked.set(!advertisingChecked())" />
+          <span><strong>Advertising</strong> — used for future ad personalization (e.g. Google AdSense).</span>
+        </label>
+        <div class="cookie-banner__actions">
+          <button type="button" class="btn btn--primary" (click)="savePreferences()">Save Preferences</button>
+        </div>
+      </div>
+    }
+  </div>
+}

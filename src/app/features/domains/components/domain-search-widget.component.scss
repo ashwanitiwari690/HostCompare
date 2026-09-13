@@ -1,0 +1,71 @@
+.domain-search__form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 8px 8px 8px 20px;
+  color: var(--color-text-faint);
+}
+
+.domain-search__form input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  min-width: 0;
+}
+
+.domain-search__results {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.domain-result {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.domain-result__name {
+  font-weight: 600;
+  flex: 1;
+}
+
+.domain-result__status {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.domain-result__status--available {
+  background: var(--color-success-soft);
+  color: var(--color-success);
+}
+
+.domain-result__status--taken {
+  background: var(--color-danger-soft);
+  color: var(--color-danger);
+}
+
+.domain-result__price {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.domain-search__note {
+  margin: 12px 0 0;
+  font-size: 0.76rem;
+  color: var(--color-text-faint);
+  text-align: center;
+}

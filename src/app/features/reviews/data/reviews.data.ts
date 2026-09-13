@@ -1,0 +1,122 @@
+import { Review } from '../../../core/models';
+
+/**
+ * Editorial ratings only — never fabricated customer testimonials.
+ * All ratings/verdicts are sample editorial content for development.
+ */
+export const REVIEWS: Review[] = [
+  {
+    id: 'review-hostinger', providerId: 'hostinger', slug: 'hostinger', title: 'Hostinger Review',
+    rating: { overall: 4.6, easeOfUse: 4.7, performance: 4.5, support: 4.3, features: 4.6, valueForMoney: 4.9 },
+    summary: 'Hostinger remains the benchmark for budget hosting, combining rock-bottom entry pricing with genuinely fast LiteSpeed infrastructure.',
+    verdict: 'An easy recommendation for beginners and budget-conscious site owners, as long as you plan around the renewal price increase.',
+    pros: ['Very affordable entry pricing', 'Fast LiteSpeed-based servers', 'Beginner-friendly hPanel'],
+    cons: ['Renewal prices increase significantly', 'No phone support'],
+    bestFor: ['Bloggers and first-time website owners', 'Budget-conscious small businesses'],
+    author: 'HostCompare Editorial Team', publishedDate: '2025-03-10', updatedDate: '2026-01-15', isMockData: true,
+  },
+  {
+    id: 'review-bluehost', providerId: 'bluehost', slug: 'bluehost', title: 'Bluehost Review',
+    rating: { overall: 4.3, easeOfUse: 4.4, performance: 4.2, support: 4.2, features: 4.3, valueForMoney: 4.0 },
+    summary: 'An officially recommended WordPress host with a smooth setup flow, though checkout upsells and renewal pricing require attention.',
+    verdict: 'A safe, well-supported choice for WordPress beginners who want an established, well-documented host.',
+    pros: ['Officially recommended by WordPress.org', 'Beginner-friendly cPanel'],
+    cons: ['Renewal prices are steep', 'Upsells during checkout'],
+    bestFor: ['WordPress beginners', 'Small business websites'],
+    author: 'HostCompare Editorial Team', publishedDate: '2025-03-12', updatedDate: '2026-01-15', isMockData: true,
+  },
+  {
+    id: 'review-siteground', providerId: 'siteground', slug: 'siteground', title: 'SiteGround Review',
+    rating: { overall: 4.5, easeOfUse: 4.3, performance: 4.8, support: 4.7, features: 4.5, valueForMoney: 3.9 },
+    summary: 'SiteGround pairs Google Cloud infrastructure with excellent support, making it our top pick for performance-focused WordPress sites.',
+    verdict: 'Worth the premium if page speed, uptime and support quality are priorities over the lowest possible monthly price.',
+    pros: ['Excellent performance and uptime', 'Outstanding customer support'],
+    cons: ['Higher renewal pricing', 'Storage limits on entry plans'],
+    bestFor: ['Performance-focused WordPress sites', 'Agencies and small businesses'],
+    author: 'HostCompare Editorial Team', publishedDate: '2025-03-14', updatedDate: '2026-01-15', isMockData: true,
+  },
+  {
+    id: 'review-namecheap', providerId: 'namecheap', slug: 'namecheap', title: 'Namecheap Hosting Review',
+    rating: { overall: 4.2, easeOfUse: 4.1, performance: 4.0, support: 4.0, features: 4.2, valueForMoney: 4.5 },
+    summary: 'Namecheap extends its domain-registrar value proposition into hosting, with fair pricing and no aggressive upsells.',
+    verdict: 'A sensible pick when you want your domain and hosting bundled under one simple, fairly priced account.',
+    pros: ['Very competitive pricing', 'Free domain privacy included'],
+    cons: ['Performance is average versus premium hosts', 'Fewer advanced features on entry plans'],
+    bestFor: ['Users who want domain + hosting together', 'Budget-conscious personal sites'],
+    author: 'HostCompare Editorial Team', publishedDate: '2025-03-16', updatedDate: '2026-01-15', isMockData: true,
+  },
+  {
+    id: 'review-godaddy', providerId: 'godaddy', slug: 'godaddy', title: 'GoDaddy Review',
+    rating: { overall: 3.9, easeOfUse: 4.0, performance: 3.8, support: 3.9, features: 4.0, valueForMoney: 3.6 },
+    summary: "GoDaddy's brand recognition and phone support are strong, but checkout upsells and renewal pricing take some navigating.",
+    verdict: 'A reasonable all-in-one option if you value phone support and brand trust over squeezing out the lowest price.',
+    pros: ['Extremely well known and trusted brand', 'Strong phone support availability'],
+    cons: ['Aggressive upselling', 'Renewal prices increase notably'],
+    bestFor: ['Users who want one platform for everything', 'Businesses wanting phone support'],
+    author: 'HostCompare Editorial Team', publishedDate: '2025-03-18', updatedDate: '2026-01-15', isMockData: true,
+  },
+  {
+    id: 'review-dreamhost', providerId: 'dreamhost', slug: 'dreamhost', title: 'DreamHost Review',
+    rating: { overall: 4.1, easeOfUse: 3.9, performance: 4.1, support: 3.8, features: 4.2, valueForMoney: 4.2 },
+    summary: "DreamHost's independent ownership and industry-leading 97-day guarantee make it a low-risk, privacy-conscious choice.",
+    verdict: 'A strong pick for shoppers who want maximum flexibility to change their mind and value data privacy.',
+    pros: ['Longest money-back guarantee in the industry', 'Strong privacy stance'],
+    cons: ['Custom panel has a learning curve versus cPanel', 'No phone support'],
+    bestFor: ['Privacy-conscious users', 'Developers comfortable with custom tooling'],
+    author: 'HostCompare Editorial Team', publishedDate: '2025-03-20', updatedDate: '2026-01-15', isMockData: true,
+  },
+  {
+    id: 'review-a2-hosting', providerId: 'a2-hosting', slug: 'a2-hosting', title: 'A2 Hosting Review',
+    rating: { overall: 4.3, easeOfUse: 4.0, performance: 4.6, support: 4.2, features: 4.4, valueForMoney: 4.1 },
+    summary: 'A2 Hosting targets developers with Turbo Boost performance tiers, data-center choice and flexible runtime support.',
+    verdict: 'A great fit for technical users who want speed and control and are comfortable configuring caching themselves.',
+    pros: ['Turbo plans offer excellent speed', 'Flexible for developers (SSH, multiple runtimes)'],
+    cons: ['Entry plan performance is average without the Turbo upgrade', 'Interface is less polished than premium hosts'],
+    bestFor: ['Developers who want speed and control', 'Users needing multiple PHP/Node versions'],
+    author: 'HostCompare Editorial Team', publishedDate: '2025-03-22', updatedDate: '2026-01-15', isMockData: true,
+  },
+  {
+    id: 'review-cloudways', providerId: 'cloudways', slug: 'cloudways', title: 'Cloudways Review',
+    rating: { overall: 4.5, easeOfUse: 4.2, performance: 4.7, support: 4.4, features: 4.6, valueForMoney: 4.0 },
+    summary: 'Cloudways layers a managed hosting experience on top of AWS, Google Cloud, DigitalOcean and Vultr for cloud-grade performance.',
+    verdict: 'Our top pick for agencies and growing WooCommerce stores that want cloud performance without hiring a server administrator.',
+    pros: ['Excellent performance via top cloud infrastructure', 'Flexible pay-as-you-go pricing'],
+    cons: ['No free domain', 'Billing model can be confusing for beginners'],
+    bestFor: ['Agencies managing multiple client sites', 'Growing WordPress/WooCommerce sites'],
+    author: 'HostCompare Editorial Team', publishedDate: '2025-03-24', updatedDate: '2026-01-15', isMockData: true,
+  },
+  {
+    id: 'review-ionos', providerId: 'ionos', slug: 'ionos', title: 'IONOS Review',
+    rating: { overall: 4.0, easeOfUse: 3.9, performance: 4.2, support: 3.9, features: 4.1, valueForMoney: 4.3 },
+    summary: "IONOS's aggressive introductory pricing and large European infrastructure make it worth a look for budget-first shoppers.",
+    verdict: 'A solid value pick provided you budget for the renewal price increase after the first term.',
+    pros: ['Very low introductory pricing', 'Backed by large European hosting infrastructure'],
+    cons: ['Renewal price jumps significantly after year one', 'Interface less refined than some competitors'],
+    bestFor: ['Budget shoppers comfortable switching hosts after year one', 'Users wanting European data centers'],
+    author: 'HostCompare Editorial Team', publishedDate: '2025-03-26', updatedDate: '2026-01-15', isMockData: true,
+  },
+  {
+    id: 'review-digitalocean', providerId: 'digitalocean', slug: 'digitalocean', title: 'DigitalOcean Review',
+    rating: { overall: 4.6, easeOfUse: 3.8, performance: 4.8, support: 4.0, features: 4.5, valueForMoney: 4.4 },
+    summary: "DigitalOcean's Droplets deliver excellent, predictable cloud performance for developers comfortable managing their own server.",
+    verdict: 'Our top recommendation for developers who want full server control and transparent, usage-based pricing.',
+    pros: ['Excellent raw performance', 'Transparent, predictable pricing'],
+    cons: ['No managed cPanel-style hosting', 'Requires server management knowledge'],
+    bestFor: ['Developers and technical users', 'SaaS and application hosting'],
+    author: 'HostCompare Editorial Team', publishedDate: '2025-03-28', updatedDate: '2026-01-15', isMockData: true,
+  },
+  {
+    id: 'review-vultr', providerId: 'vultr', slug: 'vultr', title: 'Vultr Review',
+    rating: { overall: 4.5, easeOfUse: 3.9, performance: 4.7, support: 3.9, features: 4.4, valueForMoney: 4.5 },
+    summary: 'Vultr matches DigitalOcean on performance while offering one of the widest selections of global data center locations.',
+    verdict: 'A strong DigitalOcean alternative, especially if you need a data center location the competition does not cover.',
+    pros: ['Widest choice of data center locations', 'Competitive, transparent pricing'],
+    cons: ['Requires server management skills', 'No managed hosting option'],
+    bestFor: ['Developers needing specific geographic locations', 'VPS users optimizing for cost'],
+    author: 'HostCompare Editorial Team', publishedDate: '2025-03-30', updatedDate: '2026-01-15', isMockData: true,
+  },
+];
+
+export function getReviewBySlug(slug: string): Review | undefined {
+  return REVIEWS.find((r) => r.slug === slug);
+}

@@ -1,0 +1,34 @@
+<div class="container page-header">
+  <app-breadcrumb [items]="[{ label: 'Home', path: '/' }, { label: 'Search' }]" />
+  <h1>Search HostCompare</h1>
+  <div class="page-header__search">
+    <app-search-box [initialValue]="query()" (search)="onSearch($event)" />
+  </div>
+</div>
+
+<div class="container search-results">
+  @if (query() && hasResults) {
+    @for (group of groups(); track group.type) {
+      @if (group.items.length) {
+        <section class="search-group">
+          <h2><app-icon [name]="group.icon" [size]="18" /> {{ group.label }}</h2>
+          <div class="search-group__list">
+            @for (item of group.items; track item.routerLink + item.title) {
+              <a [routerLink]="item.routerLink" class="search-result card">
+                <div>
+                  <h3>{{ item.title }}</h3>
+                  <p>{{ item.description }}</p>
+                </div>
+                @if (item.meta) { <span class="search-result__meta">{{ item.meta }}</span> }
+              </a>
+            }
+          </div>
+        </section>
+      }
+    }
+  } @else if (query()) {
+    <app-empty-state icon="search" title="No results found" [description]="'No matches for \'' + query() + '\'. Try a different search term.'" />
+  } @else {
+    <app-empty-state icon="search" title="Search HostCompare" description="Search for hosting providers, domains, reviews, guides and comparisons." />
+  }
+</div>

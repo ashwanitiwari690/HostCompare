@@ -1,0 +1,26 @@
+<div class="container page-header">
+  <app-breadcrumb [items]="[{ label: 'Home', path: '/' }, { label: 'Guides' }]" />
+  <h1>Hosting &amp; Domain Guides</h1>
+  <p class="text-muted">Practical, jargon-free guides for every stage — from buying a domain to scaling to a VPS.</p>
+</div>
+
+<div class="container">
+  <div class="category-filter">
+    @for (category of categories; track category) {
+      <button
+        type="button"
+        class="chip"
+        [class.chip--active]="activeCategory() === category"
+        (click)="setCategory(category)"
+      >
+        {{ category }}
+      </button>
+    }
+  </div>
+
+  <div class="guides-grid">
+    @for (guide of filteredGuides(); track guide.slug) {
+      <app-guide-card [guide]="guide" />
+    }
+  </div>
+</div>

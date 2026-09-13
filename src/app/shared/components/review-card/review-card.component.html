@@ -1,0 +1,48 @@
+<article class="review-card card">
+  <div class="review-card__head">
+    <div class="review-card__logo" [style.background]="provider().logoColor">{{ provider().logoInitials }}</div>
+    <div>
+      <h3><a [routerLink]="['/reviews', review().slug]">{{ review().title }}</a></h3>
+      <app-rating-display [value]="review().rating.overall" label="Editorial rating" size="sm" />
+    </div>
+  </div>
+
+  <p class="review-card__summary">{{ review().summary }}</p>
+
+  <div class="review-card__breakdown">
+    <div><span>Ease of Use</span><strong>{{ review().rating.easeOfUse.toFixed(1) }}</strong></div>
+    <div><span>Performance</span><strong>{{ review().rating.performance.toFixed(1) }}</strong></div>
+    <div><span>Support</span><strong>{{ review().rating.support.toFixed(1) }}</strong></div>
+    <div><span>Value</span><strong>{{ review().rating.valueForMoney.toFixed(1) }}</strong></div>
+  </div>
+
+  <div class="review-card__cols">
+    <div>
+      <h4>Pros</h4>
+      <ul>
+        @for (pro of review().pros; track pro) {
+          <li>{{ pro }}</li>
+        }
+      </ul>
+    </div>
+    <div>
+      <h4>Cons</h4>
+      <ul>
+        @for (con of review().cons; track con) {
+          <li>{{ con }}</li>
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="review-card__actions">
+    <a [routerLink]="['/reviews', review().slug]" class="btn btn--outline btn--sm">Read Full Review</a>
+    <app-affiliate-button
+      [affiliateUrl]="provider().affiliateUrl"
+      [fallbackUrl]="provider().websiteUrl"
+      [ctaText]="provider().ctaText"
+      size="sm"
+      variant="secondary"
+    />
+  </div>
+</article>

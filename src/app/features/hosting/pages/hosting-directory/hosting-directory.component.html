@@ -1,0 +1,38 @@
+<div class="container page-header">
+  <app-breadcrumb [items]="[{ label: 'Home', path: '/' }, { label: 'Hosting' }]" />
+  <h1>Compare Web Hosting Providers</h1>
+  <p class="text-muted">
+    Filter by hosting type, price and features to find providers that fit your project. Select up to 4 to compare side by side.
+  </p>
+  <div class="page-header__search">
+    <app-search-box placeholder="Search providers..." (search)="onSearch($event)" />
+  </div>
+</div>
+
+<div class="container hosting-layout">
+  <aside class="hosting-layout__filters">
+    <app-filter-panel
+      [filters]="filters()"
+      [sort]="sort()"
+      [resultCount]="filteredSorted().length"
+      (filtersChange)="onFiltersChange($event)"
+      (sortChange)="onSortChange($event)"
+      (clearAll)="onClearAll()"
+    />
+  </aside>
+
+  <div class="hosting-layout__results">
+    @if (visibleProviders().length) {
+      <div class="provider-grid">
+        @for (provider of visibleProviders(); track provider.id) {
+          <app-provider-card [provider]="provider" />
+        }
+      </div>
+      <app-pagination [shown]="visibleProviders().length" [total]="filteredSorted().length" (loadMore)="loadMore()" />
+    } @else {
+      <app-empty-state icon="search" title="No providers match your filters" description="Try clearing a filter or searching a different term.">
+        <button type="button" class="btn btn--outline" (click)="onClearAll()">Clear Filters</button>
+      </app-empty-state>
+    }
+  </div>
+</div>

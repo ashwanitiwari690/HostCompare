@@ -1,0 +1,61 @@
+<article class="rec-card card">
+  <div class="rec-card__rank">#{{ rank() }} Match</div>
+
+  <div class="rec-card__head">
+    <div class="rec-card__logo" [style.background]="recommendation().provider.logoColor">
+      {{ recommendation().provider.logoInitials }}
+    </div>
+    <div class="rec-card__head-text">
+      <h3><a [routerLink]="['/hosting', recommendation().provider.slug]">{{ recommendation().provider.name }}</a></h3>
+      <p>{{ recommendation().provider.tagline }}</p>
+    </div>
+    <div class="rec-card__score">
+      <span class="rec-card__score-value">{{ recommendation().matchScore }}%</span>
+      <span class="rec-card__score-label">Match Score</span>
+    </div>
+  </div>
+
+  <div class="rec-card__stats">
+    <div>
+      <span>Starting Price</span>
+      <strong>{{ recommendation().provider.currency === 'INR' ? '₹' : '' }}{{ recommendation().provider.startingPrice }}{{ recommendation().provider.billingPeriod }}</strong>
+    </div>
+    <div>
+      <span>Hosting Type</span>
+      <strong>{{ recommendation().provider.hostingTypes.join(', ') }}</strong>
+    </div>
+    <div>
+      <span>Best For</span>
+      <strong>{{ recommendation().provider.bestFor[0] }}</strong>
+    </div>
+  </div>
+
+  <div class="rec-card__section">
+    <h4>Matching Features</h4>
+    <ul class="rec-card__features">
+      @for (feature of recommendation().matchingFeatures; track feature) {
+        <li><app-icon name="check" [size]="14" /> {{ feature }}</li>
+      }
+    </ul>
+  </div>
+
+  <div class="rec-card__why">
+    <h4>Why It Was Recommended</h4>
+    <ul>
+      @for (reason of recommendation().reasons; track reason) {
+        <li>{{ reason }}</li>
+      }
+    </ul>
+  </div>
+
+  <div class="rec-card__actions">
+    <app-compare-button [providerId]="recommendation().provider.id" [providerName]="recommendation().provider.name" />
+    <a [routerLink]="['/hosting', recommendation().provider.slug]" class="btn btn--outline btn--sm">Read Review</a>
+    <app-affiliate-button
+      [affiliateUrl]="recommendation().provider.affiliateUrl"
+      [fallbackUrl]="recommendation().provider.websiteUrl"
+      [ctaText]="recommendation().provider.ctaText"
+      size="sm"
+    />
+  </div>
+</article>

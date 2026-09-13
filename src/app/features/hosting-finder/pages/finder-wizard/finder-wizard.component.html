@@ -1,0 +1,64 @@
+<div class="container page-header">
+  <app-breadcrumb [items]="[{ label: 'Home', path: '/' }, { label: 'Hosting Finder' }]" />
+  <h1>Hosting Finder</h1>
+  <p class="text-muted">Answer a few quick questions and get a transparent, explained hosting recommendation — not just "the best hosting".</p>
+</div>
+
+<div class="container finder-container">
+  @if (!showResults()) {
+    <div class="finder-card card">
+      <app-finder-progress [current]="finder.currentStep()" [total]="finder.totalSteps" />
+
+      <div class="finder-question">
+        <h2>{{ currentQuestion().question }}</h2>
+        <p class="finder-question__help">{{ currentQuestion().helpText }}</p>
+
+        <div class="finder-options" [class.finder-options--boolean]="currentQuestion().type === 'boolean'">
+          @for (option of currentQuestion().options; track option.value) {
+            <button
+              type="button"
+              class="finder-option"
+              [class.finder-option--active]="isSelected(option.value)"
+              (click)="selectOption(option.value)"
+            >
+              {{ option.label }}
+            </button>
+          }
+        </div>
+
+        @if (finder.currentStep() > 1) {
+          <button type="button" class="btn btn--ghost" (click)="goBack()">&larr; Back</button>
+        }
+      </div>
+    </div>
+  } @else {
+    <div class="finder-results">
+      <div class="finder-results__header">
+        <h2>Your Hosting Recommendations</h2>
+        <p class="text-muted">
+          Recommendations are scored using a transparent, weighted algorithm across budget, hosting type, required
+          features, performance, WordPress/VPS support and support quality.
+        </p>
+        <button type="button" class="btn btn--ghost" (click)="restart()">Start Over</button>
+      </div>
+
+      <div class="finder-results__grid">
+        @for (rec of recommendations(); track rec.provider.id; let i = $index) {
+          <app-recommendation-card [recommendation]="rec" [rank]="i + 1" />
+        }
+      </div>
+
+      <div class="finder-results__compare card">
+        <div>
+          <h3>Compare Your Top Choices</h3>
+          <p class="text-muted">
+            Select 2–{{ maxCompare }} providers above using "Add to compare", then continue to see them side by side.
+          </p>
+        </div>
+        <button type="button" class="btn btn--primary" [disabled]="compareSelection.count() < 2" (click)="goToComparison()">
+          Compare Selected ({{ compareSelection.count() }})
+        </button>
+      </div>
+    </div>
+  }
+</div>

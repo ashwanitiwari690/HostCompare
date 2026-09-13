@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Sample sitemap covering the site's static routes. Dynamic routes
+  (/hosting/:slug, /reviews/:slug, /compare/:slug, /guides/:slug) should be
+  generated from the corresponding data files (providers.data.ts,
+  comparisons.data.ts, guides.data.ts) at build time before production use —
+  see README.md "SEO strategy" for the recommended approach.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.hostcompare.example/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.hostcompare.example/hosting</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.hostcompare.example/wordpress-hosting</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.hostcompare.example/vps</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.hostcompare.example/domains</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.hostcompare.example/domain-comparison</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.hostcompare.example/compare</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.hostcompare.example/hosting-finder</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.hostcompare.example/reviews</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.hostcompare.example/guides</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.hostcompare.example/search</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.hostcompare.example/about</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://www.hostcompare.example/contact</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://www.hostcompare.example/privacy-policy</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://www.hostcompare.example/terms</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://www.hostcompare.example/disclaimer</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://www.hostcompare.example/cookie-policy</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://www.hostcompare.example/affiliate-disclosure</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+</urlset>

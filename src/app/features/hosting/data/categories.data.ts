@@ -1,0 +1,57 @@
+import { Category } from '../../../core/models';
+
+export const CATEGORIES: Category[] = [
+  {
+    id: 'shared',
+    slug: 'shared-hosting',
+    name: 'Shared Hosting',
+    description: 'Affordable entry-level hosting, ideal for blogs and small websites just getting started.',
+    iconInitials: 'SH',
+    hostingType: 'shared',
+    routerLink: '/hosting?type=shared',
+  },
+  {
+    id: 'wordpress',
+    slug: 'wordpress-hosting',
+    name: 'WordPress Hosting',
+    description: 'Optimized environments with staging, caching and 1-click installs built for WordPress.',
+    iconInitials: 'WP',
+    hostingType: 'wordpress',
+    routerLink: '/wordpress-hosting',
+  },
+  {
+    id: 'vps',
+    slug: 'vps-hosting',
+    name: 'VPS Hosting',
+    description: 'Dedicated resources on a virtual server for sites that have outgrown shared hosting.',
+    iconInitials: 'VP',
+    hostingType: 'vps',
+    routerLink: '/vps',
+  },
+  {
+    id: 'cloud',
+    slug: 'cloud-hosting',
+    name: 'Cloud Hosting',
+    description: 'Scalable infrastructure spread across cloud servers for reliability and traffic spikes.',
+    iconInitials: 'CL',
+    hostingType: 'cloud',
+    routerLink: '/hosting?type=cloud',
+  },
+  {
+    id: 'dedicated',
+    slug: 'dedicated-hosting',
+    name: 'Dedicated Hosting',
+    description: 'An entire physical server reserved for one customer, for maximum control and performance.',
+    iconInitials: 'DH',
+    hostingType: 'dedicated',
+    routerLink: '/hosting?type=dedicated',
+  },
+  {
+    id: 'developer',
+    slug: 'developer-hosting',
+    name: 'Developer Hosting',
+    description: 'Root access, multiple runtimes and API-driven infrastructure built for engineers.',
+    iconInitials: 'DV',
+    routerLink: '/hosting?type=vps',
+  },
+];

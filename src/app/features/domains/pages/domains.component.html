@@ -1,0 +1,64 @@
+<div class="container page-header">
+  <app-breadcrumb [items]="[{ label: 'Home', path: '/' }, { label: 'Domains' }]" />
+  <h1>Find &amp; Compare Domain Names</h1>
+  <p class="text-muted">Search for a domain name and compare registrars on pricing, privacy and DNS features.</p>
+</div>
+
+<section class="section section--tight">
+  <div class="container container--faq">
+    <app-domain-search-widget />
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__eyebrow">TLDs</span>
+      <h2 class="section__title">Popular Domain Extensions</h2>
+    </div>
+    <div class="tld-grid">
+      @for (ext of extensions(); track ext.tld) {
+        <div class="tld-card card">
+          <span class="tld-card__tld">{{ ext.tld }}</span>
+          <p>{{ ext.description }}</p>
+          <div class="tld-card__price">
+            <span>Reg: ₹{{ ext.registrationPrice }}/yr</span>
+            <span>Renew: ₹{{ ext.renewalPrice }}/yr</span>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__eyebrow">Registrars</span>
+      <h2 class="section__title">Compare Domain Registrars</h2>
+      <p class="section__subtitle">
+        <a routerLink="/domain-comparison">See the full feature-by-feature domain registrar comparison &rarr;</a>
+      </p>
+    </div>
+    <div class="registrar-grid">
+      @for (registrar of registrars(); track registrar.id) {
+        <div class="registrar-card card">
+          <div class="registrar-card__head">
+            <div class="registrar-card__logo" [style.background]="registrar.logoColor">{{ registrar.logoInitials }}</div>
+            <div>
+              <h3>{{ registrar.name }}</h3>
+              <app-rating-display [value]="registrar.rating" size="sm" />
+            </div>
+          </div>
+          <p>{{ registrar.description }}</p>
+          <div class="registrar-card__meta">
+            <span>From ₹{{ registrar.registrationPriceFrom }}/yr</span>
+            @if (registrar.whoisPrivacyFree) { <span><app-icon name="check" [size]="14" /> Free WHOIS privacy</span> }
+          </div>
+          <app-affiliate-button [affiliateUrl]="registrar.affiliateUrl" [fallbackUrl]="registrar.websiteUrl" [ctaText]="registrar.ctaText" size="sm" />
+        </div>
+      }
+    </div>
+    <p class="mock-data-note">Sample registrar pricing for demonstration — always confirm current pricing before registering.</p>
+  </div>
+</section>

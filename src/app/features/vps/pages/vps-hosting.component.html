@@ -1,0 +1,112 @@
+<div class="container page-header">
+  <app-breadcrumb [items]="[{ label: 'Home', path: '/' }, { label: 'VPS Hosting' }]" />
+  <h1>Best VPS Hosting Providers</h1>
+  <p class="text-muted">
+    Compare virtual private server providers on CPU, RAM, storage, bandwidth, root access, managed support and price.
+  </p>
+</div>
+
+<section class="section section--tight">
+  <div class="container">
+    <div class="vps-category-grid">
+      @for (category of categories; track category.title) {
+        <div class="vps-category card">
+          <h3>{{ category.title }}</h3>
+          <p>{{ category.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+@if (specRows().length) {
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">Specs</span>
+        <h2 class="section__title">Cloud &amp; Developer VPS Specs</h2>
+      </div>
+      <div class="vps-table-wrap">
+        <table class="vps-table">
+          <thead>
+            <tr>
+              <th scope="col">Provider</th>
+              <th scope="col">CPU</th>
+              <th scope="col">RAM</th>
+              <th scope="col">Storage</th>
+              <th scope="col">Bandwidth</th>
+              <th scope="col">Root Access</th>
+              <th scope="col">Managed Support</th>
+              <th scope="col">Price</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (row of specRows(); track row.provider.id) {
+              <tr>
+                <td><strong>{{ row.provider.name }}</strong></td>
+                <td>{{ row.plan.cpu ?? '—' }}</td>
+                <td>{{ row.plan.ram ?? '—' }}</td>
+                <td>{{ row.plan.storage }}</td>
+                <td>{{ row.plan.bandwidth }}</td>
+                <td>Yes</td>
+                <td>{{ row.managed ? 'Managed' : 'Self-managed' }}</td>
+                <td>₹{{ row.plan.price }}{{ row.plan.billingPeriod }}</td>
+                <td>
+                  <app-affiliate-button
+                    [affiliateUrl]="row.provider.affiliateUrl"
+                    [fallbackUrl]="row.provider.websiteUrl"
+                    ctaText="Visit"
+                    size="sm"
+                    variant="secondary"
+                  />
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="mock-data-note">Sample plan specs for demonstration — always verify current specs and pricing with the provider.</p>
+    </div>
+  </section>
+}
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__eyebrow">All Providers</span>
+      <h2 class="section__title">All VPS &amp; Cloud Providers</h2>
+    </div>
+    <div class="vps-provider-grid">
+      @for (provider of vpsProviders(); track provider.id) {
+        <app-provider-card [provider]="provider" />
+      }
+    </div>
+  </div>
+</section>
+
+@if (guides().length) {
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">Guides</span>
+        <h2 class="section__title">VPS Guides</h2>
+      </div>
+      <div class="vps-guide-grid">
+        @for (guide of guides(); track guide.slug) {
+          <app-guide-card [guide]="guide" />
+        }
+      </div>
+    </div>
+  </section>
+}
+
+<section class="section">
+  <div class="container container--faq">
+    <div class="section__header">
+      <span class="section__eyebrow">FAQ</span>
+      <h2 class="section__title">Frequently Asked Questions</h2>
+    </div>
+    <app-faq-accordion [items]="faqs" />
+  </div>
+</section>

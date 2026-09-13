@@ -1,0 +1,147 @@
+.provider-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px;
+  height: 100%;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.provider-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.provider-card__rank {
+  position: absolute;
+  top: -10px;
+  left: 18px;
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.provider-card__fav {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.provider-card__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-right: 36px;
+}
+
+.provider-card__logo {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.provider-card__name {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.provider-card__name a {
+  color: var(--color-text);
+}
+
+.provider-card__tagline {
+  margin: 2px 0 0;
+  font-size: 0.83rem;
+  color: var(--color-text-muted);
+}
+
+.provider-card__desc {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.provider-card__types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.provider-card__features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.83rem;
+  color: var(--color-text);
+}
+
+.provider-card__features li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.provider-card__features app-icon {
+  color: var(--color-success);
+  flex-shrink: 0;
+}
+
+.provider-card__price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-border);
+}
+
+.provider-card__price-value {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.provider-card__price-period {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.provider-card__price-note {
+  font-size: 0.72rem;
+  color: var(--color-text-faint);
+  margin-left: auto;
+}
+
+.provider-card__guarantee {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--color-accent);
+  margin: 0;
+}
+
+.provider-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.provider-card__actions app-affiliate-button {
+  margin-left: auto;
+}

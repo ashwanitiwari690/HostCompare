@@ -1,0 +1,153 @@
+<section class="hero">
+  <div class="container hero__inner">
+    <span class="section__eyebrow">Compare Hosting. Choose Better.</span>
+    <h1>Compare Web Hosting &amp; Domains Before You Buy</h1>
+    <p class="hero__subtitle">
+      Compare hosting providers, plans, pricing, features and performance to find the right hosting for your website.
+    </p>
+
+    <div class="hero__search">
+      <app-search-box placeholder="Search hosting, domains, providers..." (search)="onHeroSearch($event)" />
+    </div>
+
+    <div class="hero__ctas">
+      <a routerLink="/hosting-finder" class="btn btn--primary">Find My Hosting</a>
+      <a routerLink="/compare" class="btn btn--outline">Compare Hosting</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__eyebrow">Categories</span>
+      <h2 class="section__title">Popular Hosting Categories</h2>
+    </div>
+    <div class="category-grid">
+      @for (category of categories; track category.id) {
+        <a [routerLink]="category.routerLink" class="category-card card">
+          <span class="category-card__icon">{{ category.iconInitials }}</span>
+          <h3>{{ category.name }}</h3>
+          <p>{{ category.description }}</p>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__eyebrow">Editorial Picks</span>
+      <h2 class="section__title">Featured Providers</h2>
+      <p class="section__subtitle">A snapshot of well-known hosting providers. Ratings are editorial; pricing is sample data — always confirm current pricing before buying.</p>
+    </div>
+    <div class="provider-grid">
+      @for (provider of featuredProviders(); track provider.id) {
+        <app-provider-card [provider]="provider" />
+      }
+    </div>
+    <div class="section__cta">
+      <a routerLink="/hosting" class="btn btn--outline">View All Hosting Providers</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__eyebrow">Head to Head</span>
+      <h2 class="section__title">Popular Comparisons</h2>
+    </div>
+    <div class="comparison-grid">
+      @for (item of popularComparisons(); track item.comparison.slug) {
+        <app-comparison-card [comparison]="item.comparison" [providerA]="item.a" [providerB]="item.b" />
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__eyebrow">Use Cases</span>
+      <h2 class="section__title">Best Hosting For</h2>
+    </div>
+    <div class="best-for-grid">
+      @for (item of bestForItems; track item.label) {
+        <a [routerLink]="item.path" class="best-for-chip">
+          <app-icon [name]="item.icon" [size]="18" />
+          <span>{{ item.label }}</span>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__eyebrow">Domains</span>
+      <h2 class="section__title">Find the Perfect Domain Name</h2>
+      <p class="section__subtitle">Search domain availability and compare registrar pricing before you buy.</p>
+    </div>
+    <app-domain-search-widget />
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__eyebrow">Learn</span>
+      <h2 class="section__title">Latest Guides</h2>
+    </div>
+    <div class="guide-grid">
+      @for (guide of latestGuides(); track guide.slug) {
+        <app-guide-card [guide]="guide" />
+      }
+    </div>
+    <div class="section__cta">
+      <a routerLink="/guides" class="btn btn--outline">Browse All Guides</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__eyebrow">Why HostCompare</span>
+      <h2 class="section__title">Built to Help You Decide, Not Just to List Providers</h2>
+    </div>
+    <div class="why-grid">
+      @for (item of whyItems; track item.title) {
+        <div class="why-card">
+          <div class="why-card__icon"><app-icon [name]="item.icon" [size]="22" /></div>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container container--narrow">
+    <app-ad-rectangle />
+  </div>
+</section>
+
+<section class="section newsletter">
+  <div class="container container--narrow newsletter__inner">
+    <h2>Stay Updated on Hosting Deals &amp; Guides</h2>
+    <p>Join our newsletter for new comparisons, guides and hosting tips. No spam.</p>
+    @if (!newsletterSubmitted()) {
+      <form class="newsletter__form" (submit)="onNewsletterSubmit($event)">
+        <input type="email" required placeholder="you@example.com" [(ngModel)]="newsletterEmail" name="newsletterEmail" />
+        <button type="submit" class="btn btn--primary">Subscribe</button>
+      </form>
+      <p class="newsletter__note">This form is frontend-only for now; email delivery requires backend integration.</p>
+    } @else {
+      <p class="newsletter__success">Thanks for subscribing! (This is a demo confirmation — no email was actually sent.)</p>
+    }
+  </div>
+</section>

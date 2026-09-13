@@ -1,0 +1,36 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <a routerLink="/" class="logo">
+          <span class="logo__mark">HC</span>
+          <span class="logo__text">HostCompare</span>
+        </a>
+        <p>Independent hosting and domain comparisons to help you choose with confidence.</p>
+      </div>
+
+      @for (column of columns; track column.title) {
+        <div class="site-footer__column">
+          <h3>{{ column.title }}</h3>
+          <ul>
+            @for (link of column.links; track link.path) {
+              <li><a [routerLink]="link.path">{{ link.label }}</a></li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+
+    <div class="site-footer__disclosure">
+      <p>
+        <strong>Affiliate Disclosure:</strong> We may earn a commission when you purchase through links on our website.
+        This does not affect our editorial opinions. <a routerLink="/affiliate-disclosure">Learn more</a>.
+      </p>
+    </div>
+
+    <div class="site-footer__bottom">
+      <span>&copy; {{ year }} HostCompare. All rights reserved.</span>
+      <span class="site-footer__mock-note">Provider pricing shown is sample data for demonstration — verify current pricing before use.</span>
+    </div>
+  </div>
+</footer>
