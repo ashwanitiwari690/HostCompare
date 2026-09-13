@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="HostCompare">
+  <defs>
+    <linearGradient id="hc-grad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1b6ef3" />
+      <stop offset="1" stop-color="#0b3fae" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#hc-grad)" />
+  <rect x="17" y="33" width="10" height="16" rx="5" fill="#ffffff" />
+  <rect x="37" y="18" width="10" height="31" rx="5" fill="#ffffff" />
+  <circle cx="47" cy="15" r="9" fill="#14b8a6" />
+  <path d="M43.5 15.5 46 18 51 10.5" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

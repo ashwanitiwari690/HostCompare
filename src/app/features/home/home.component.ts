@@ -10,6 +10,7 @@ import { AdRectangleComponent } from '../../shared/components/ad-placeholder/ad-
 import { ComparisonCardComponent } from '../../shared/components/comparison-card/comparison-card.component';
 import { GuideCardComponent } from '../../shared/components/guide-card/guide-card.component';
 import { IconComponent, IconName } from '../../shared/components/icon/icon.component';
+import { LogoMarkComponent } from '../../shared/components/logo/logo-mark.component';
 import { ProviderCardComponent } from '../../shared/components/provider-card/provider-card.component';
 import { SearchBoxComponent } from '../../shared/components/search-box/search-box.component';
 import { CATEGORIES } from '../hosting/data/categories.data';
@@ -39,6 +40,7 @@ interface WhyItem {
     GuideCardComponent,
     DomainSearchWidgetComponent,
     IconComponent,
+    LogoMarkComponent,
     AdRectangleComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
