@@ -4,6 +4,7 @@ import { CompareSelectionService } from '../../core/services/compare-selection.s
 import { Theme } from '../../core/models';
 import { ThemeService } from '../../core/services/theme.service';
 import { IconComponent } from '../../shared/components/icon/icon.component';
+import { LogoMarkComponent } from '../../shared/components/logo/logo-mark.component';
 import { SearchBoxComponent } from '../../shared/components/search-box/search-box.component';
 
 interface NavLink {
@@ -14,7 +15,7 @@ interface NavLink {
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, IconComponent, SearchBoxComponent],
+  imports: [RouterLink, RouterLinkActive, IconComponent, LogoMarkComponent, SearchBoxComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
