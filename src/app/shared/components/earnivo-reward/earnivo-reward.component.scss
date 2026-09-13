@@ -1,0 +1,134 @@
+.earnivo-card {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  // Anchored to the right on every breakpoint - only `right` is set (never
+  // `left`), so the fixed-position box can't get pulled to the left edge.
+  // The width is capped responsively instead of via a breakpoint so it
+  // never needs a media query to stay a compact bottom-right card, down to
+  // the smallest phone screens.
+  width: min(340px, calc(100vw - 32px));
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-lg);
+  animation: earnivo-rise 0.25s ease-out;
+}
+
+@keyframes earnivo-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .earnivo-card {
+    animation: none;
+  }
+}
+
+.earnivo-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-text-faint);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.earnivo-close:hover {
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+}
+
+.earnivo-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-right: 24px;
+}
+
+.earnivo-head strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.earnivo-head small {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.earnivo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+.earnivo-body {
+  margin: 0;
+  font-size: 0.87rem;
+  color: var(--color-text-muted);
+}
+
+.earnivo-body strong {
+  color: var(--color-text);
+}
+
+.earnivo-success {
+  color: var(--color-success);
+}
+
+.earnivo-success strong {
+  color: inherit;
+}
+
+.earnivo-error {
+  color: var(--color-danger);
+}
+
+.earnivo-paused {
+  margin: 0;
+  display: inline-flex;
+  align-self: flex-start;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-warning);
+  background: var(--color-warning-soft);
+  border-radius: var(--radius-pill);
+  padding: 4px 12px;
+}
+
+.earnivo-progress {
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-alt);
+  overflow: hidden;
+}
+
+.earnivo-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--color-primary);
+  transition: width 1s linear;
+}
