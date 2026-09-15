@@ -7,6 +7,6 @@ export const environment = {
   // token in the URL; the reward widget pairs that token with this key to
   // confirm the visit and credit the visitor's wallet. Leave blank to
   // disable the widget entirely.
-  earnivoApiBaseUrl: 'http://localhost:4227/api',
-  earnivoApiKey: 'ak_82617656f44223f158d9b3ed4e4b72e7253b4a59d0259d1e',
+  earnivoApiBaseUrl: 'https://api.admobility.in/api',
+  earnivoApiKey: 'ak_98cafee3d3d15bb00c53ae82d15cbb26a16a58892bdfdb58',
 };
