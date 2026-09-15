@@ -1,6 +1,8 @@
 @if (reward.visible()) {
   <aside class="earnivo-card" role="status" aria-live="polite" [style.bottom.px]="16 + bannerClearance()">
-    <button type="button" class="earnivo-close" (click)="reward.dismiss()" aria-label="Hide reward panel">&times;</button>
+    @if (reward.state() !== 'waiting') {
+      <button type="button" class="earnivo-close" (click)="reward.dismiss()" aria-label="Hide reward panel">&times;</button>
+    }
 
     <div class="earnivo-head">
       <span class="earnivo-badge" aria-hidden="true">
