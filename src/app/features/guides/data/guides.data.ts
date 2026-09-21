@@ -431,7 +431,7 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: 'best-wordpress-hosting',
-    title: 'Best WordPress Hosting: How to Compare Your Options',
+    title: 'WordPress Hosting Guide: How to Compare Your Options',
     category: 'WordPress',
     excerpt: 'A framework for evaluating managed WordPress hosts based on performance, support and pricing rather than rankings alone.',
     author: 'HostCompare Editorial Team',
@@ -469,7 +469,7 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: 'best-cheap-hosting',
-    title: 'Best Cheap Hosting: Getting Real Value on a Tight Budget',
+    title: 'Affordable Web Hosting: Getting Real Value on a Budget',
     category: 'Hosting',
     excerpt: 'How to find genuinely good value hosting without getting burned by unrealistic renewal prices or missing features.',
     author: 'HostCompare Editorial Team',
@@ -505,7 +505,7 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: 'best-hosting-for-beginners',
-    title: 'Best Hosting for Beginners: What Actually Matters',
+    title: 'Web Hosting for Beginners: What Actually Matters',
     category: 'Hosting',
     excerpt: 'A guide to picking beginner-friendly hosting based on ease of use and support, not just price or feature lists.',
     author: 'HostCompare Editorial Team',
@@ -544,7 +544,7 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: 'best-vps-hosting',
-    title: 'Best VPS Hosting: How to Compare Providers',
+    title: 'VPS Hosting Guide: How to Evaluate Providers',
     category: 'VPS',
     excerpt: 'A framework for comparing VPS providers on CPU, RAM, managed support and data-center location.',
     author: 'HostCompare Editorial Team',

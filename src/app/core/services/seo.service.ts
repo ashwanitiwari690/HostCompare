@@ -11,7 +11,7 @@ export interface PageSeoData {
 }
 
 const SITE_NAME = 'HostCompare';
-const DEFAULT_ORIGIN = 'https://www.hostcompare.example';
+const DEFAULT_ORIGIN = 'https://host-compare.vercel.app';
 const DEFAULT_IMAGE = '/og-image.png';
 
 /**

@@ -1,18 +1,19 @@
 <div class="container about-hero">
   <app-breadcrumb [items]="[{ label: 'Home', path: '/' }, { label: 'About' }]" />
-  <h1>Compare Hosting. Choose Better.</h1>
+  <span class="section__eyebrow">About HostCompare</span>
+  <h1>Independent Hosting Comparisons &amp; Practical Guides</h1>
   <p>
-    HostCompare is an independent hosting and domain comparison platform. Instead of a single "best hosting" list, we
-    focus on helping you understand the trade-offs between providers so you can make the right call for your specific
-    project, budget and technical comfort.
+    HostCompare is an independent web hosting and domain comparison platform. Instead of generic "top 10" lists, we
+    focus on helping you understand the real trade-offs between hosting architectures, introductory vs. renewal pricing,
+    and technical capabilities so you can make the right decision for your specific website or business.
   </p>
 </div>
 
 <section class="section section--tight">
   <div class="container">
     <div class="section__header">
-      <span class="section__eyebrow">What We Do</span>
-      <h2 class="section__title">Our Approach</h2>
+      <span class="section__eyebrow">Our Mission</span>
+      <h2 class="section__title">Our Editorial Standards</h2>
     </div>
     <div class="about-values">
       @for (item of values; track item.title) {
@@ -28,18 +29,39 @@
 
 <section class="section section--alt">
   <div class="container container--faq">
-    <h2>How We Make Money</h2>
+    <h2>Who HostCompare Is For</h2>
     <p>
-      HostCompare may earn a commission when you purchase through certain links on this site — see our
-      <a routerLink="/affiliate-disclosure">Affiliate Disclosure</a> for details. This never changes an editorial rating
-      or recommendation; providers cannot pay for a better score. The site is also designed to support future
-      advertising (see our <a routerLink="/cookie-policy">Cookie Policy</a>), which will always be clearly labeled as
-      advertising.
+      Whether you are launching your first WordPress blog, migrating an established ecommerce store, or architecting a
+      scalable cloud cluster, HostCompare provides clear, side-by-side technical breakdowns. We cover shared hosting,
+      managed WordPress, VPS, and cloud infrastructure across major global providers.
     </p>
-    <h2>Get a Personalized Recommendation</h2>
+
+    <h2>How Comparisons Are Created</h2>
     <p>
-      Rather than reading every review on the site, try the <a routerLink="/hosting-finder">Hosting Finder</a> — answer
-      a few questions and get a transparent, scored recommendation you can compare and act on.
+      Every provider is evaluated against standardized criteria: server software (LiteSpeed, Nginx, Apache), storage hardware
+      (NVMe SSD vs standard SSD), backup frequency, SSL automation, customer support availability, and pricing transparency.
+      Read our complete <a routerLink="/methodology">Comparison Methodology</a> for full details.
+    </p>
+
+    <h2>How We Are Funded</h2>
+    <p>
+      HostCompare may earn a referral commission when you purchase through links on our site — see our
+      <a routerLink="/affiliate-disclosure">Affiliate Disclosure</a> for details. Affiliate partnerships never influence our
+      ratings or verdicts; providers cannot pay for higher scores. We also display clearly labeled non-intrusive advertisements
+      (see our <a routerLink="/cookie-policy">Cookie Policy</a>).
+    </p>
+
+    <h2>Corrections &amp; Feedback</h2>
+    <p>
+      Hosting plans and promotional terms change frequently. If you spot outdated pricing or an inaccurate specification,
+      please let us know by emailing <a href="mailto:ashwini12tiwari@gmail.com">ashwini12tiwari@gmail.com</a>. Our editors
+      investigate and update listings promptly.
+    </p>
+
+    <h2>Need a Quick Recommendation?</h2>
+    <p>
+      Try our interactive <a routerLink="/hosting-finder">Hosting Finder</a> — answer a few simple questions about your project,
+      and get a transparent, scored recommendation tailored to your needs.
     </p>
   </div>
 </section>

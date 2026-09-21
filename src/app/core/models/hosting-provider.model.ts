@@ -67,6 +67,6 @@ export interface HostingProvider {
   relatedComparisonSlugs: string[];
   faqs: ProviderFaq[];
   popularity: number;
-  isMockData: true;
+  isMockData?: boolean;
   dataUpdated: string;
 }

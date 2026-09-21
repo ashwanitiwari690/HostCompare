@@ -1,0 +1,42 @@
+<div class="container glossary-hero">
+  <app-breadcrumb [items]="[{ label: 'Home', path: '/' }, { label: 'Glossary' }]" />
+  <span class="section__eyebrow">Hosting Terminology &amp; Education</span>
+  <h1>Web Hosting Glossary</h1>
+  <p class="glossary-hero__lead">
+    Demystifying web hosting jargon. Clear, practical explanations of hosting terminology, server infrastructure,
+    networking protocols, and technical features to help you make informed decisions.
+  </p>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="glossary-filter-bar">
+      <div class="category-tabs">
+        @for (cat of categories; track cat) {
+          <button
+            type="button"
+            class="tab-btn"
+            [class.is-active]="selectedCategory() === cat"
+            (click)="selectCategory(cat)"
+          >
+            {{ cat }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="glossary-grid">
+      @for (term of filteredTerms(); track term.slug) {
+        <a [routerLink]="['/glossary', term.slug]" class="glossary-card card">
+          <div class="glossary-card__top">
+            <app-badge variant="primary">{{ term.category }}</app-badge>
+          </div>
+          <h2 class="glossary-card__title">{{ term.term }}</h2>
+          <p class="glossary-card__def">{{ term.shortDefinition }}</p>
+          <span class="glossary-card__link">Read full explanation &rarr;</span>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+

@@ -8,13 +8,13 @@ import { HostingService } from '../../core/services/hosting.service';
 import { SeoService } from '../../core/services/seo.service';
 import { AdRectangleComponent } from '../../shared/components/ad-placeholder/ad-variants';
 import { ComparisonCardComponent } from '../../shared/components/comparison-card/comparison-card.component';
+import { FaqAccordionComponent } from '../../shared/components/faq-accordion/faq-accordion.component';
 import { GuideCardComponent } from '../../shared/components/guide-card/guide-card.component';
 import { IconComponent, IconName } from '../../shared/components/icon/icon.component';
 import { LogoMarkComponent } from '../../shared/components/logo/logo-mark.component';
 import { ProviderCardComponent } from '../../shared/components/provider-card/provider-card.component';
 import { SearchBoxComponent } from '../../shared/components/search-box/search-box.component';
 import { CATEGORIES } from '../hosting/data/categories.data';
-import { DomainSearchWidgetComponent } from '../domains/components/domain-search-widget.component';
 
 interface BestForItem {
   label: string;
@@ -22,10 +22,11 @@ interface BestForItem {
   icon: IconName;
 }
 
-interface WhyItem {
+interface FeatureExplainedItem {
   icon: IconName;
   title: string;
-  description: string;
+  summary: string;
+  link: string;
 }
 
 @Component({
@@ -38,10 +39,10 @@ interface WhyItem {
     ProviderCardComponent,
     ComparisonCardComponent,
     GuideCardComponent,
-    DomainSearchWidgetComponent,
     IconComponent,
     LogoMarkComponent,
     AdRectangleComponent,
+    FaqAccordionComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './home.component.html',
@@ -52,7 +53,7 @@ export class HomeComponent implements OnInit {
 
   readonly bestForItems: BestForItem[] = [
     { label: 'Beginners', path: '/guides/best-hosting-for-beginners', icon: 'star' },
-    { label: 'Cheap Hosting', path: '/guides/best-cheap-hosting', icon: 'shield' },
+    { label: 'Affordable Hosting', path: '/guides/best-cheap-hosting', icon: 'shield' },
     { label: 'WordPress', path: '/wordpress-hosting', icon: 'globe' },
     { label: 'Developers', path: '/guides/developer-hosting-guide', icon: 'server' },
     { label: 'Small Business', path: '/hosting?type=shared', icon: 'check' },
@@ -60,12 +61,71 @@ export class HomeComponent implements OnInit {
     { label: 'Cloud', path: '/guides/what-is-cloud-hosting', icon: 'globe' },
   ];
 
-  readonly whyItems: WhyItem[] = [
-    { icon: 'shield', title: 'Independent Comparisons', description: 'We compare providers on the same criteria, side by side, without pretending every host is "the best".' },
-    { icon: 'info', title: 'Transparent Information', description: 'Editorial ratings, sample pricing and features are clearly labeled, including when they are estimates.' },
-    { icon: 'scale', title: 'Easy Comparison', description: 'Add providers to a comparison table in one click and see the differences that actually matter.' },
-    { icon: 'check', title: 'Hosting Finder', description: 'Answer a few questions and get a transparent, explained match instead of a generic "best of" list.' },
-    { icon: 'clock', title: 'Helpful Guides', description: 'Practical, jargon-free guides for every stage, from buying a domain to scaling to a VPS.' },
+  readonly featuresExplained: FeatureExplainedItem[] = [
+    {
+      icon: 'server',
+      title: 'NVMe & SSD Storage',
+      summary: 'Why storage protocol (NVMe vs SATA) directly impacts database query speeds, dynamic PHP generation, and WordPress responsiveness.',
+      link: '/glossary/nvme',
+    },
+    {
+      icon: 'globe',
+      title: 'Bandwidth & Traffic Limits',
+      summary: 'Understanding unmetered bandwidth versus hard caps, port connection speeds, and how to estimate your website monthly transfer needs.',
+      link: '/glossary/bandwidth',
+    },
+    {
+      icon: 'shield',
+      title: 'SSL/TLS Encryption',
+      summary: 'How automated Let’s Encrypt certificates secure visitor sessions, activate HTTPS, and satisfy Google Chrome security standards.',
+      link: '/glossary/ssl',
+    },
+    {
+      icon: 'clock',
+      title: 'Uptime & Service Level Agreements',
+      summary: 'The mathematical difference between 99.9% and 99.99% uptime, hardware failover mechanisms, and what SLAs actually guarantee.',
+      link: '/glossary/uptime',
+    },
+    {
+      icon: 'monitor',
+      title: 'Control Panels & UI',
+      summary: 'Comparing industry standard cPanel with custom proprietary dashboards like Hostinger’s hPanel and SiteGround’s Site Tools.',
+      link: '/glossary/control-panel',
+    },
+    {
+      icon: 'globe',
+      title: 'Content Delivery Networks (CDNs)',
+      summary: 'How edge caching across distributed global Points of Presence reduces latency for international visitors and stops DDoS attacks.',
+      link: '/glossary/cdn',
+    },
+  ];
+
+  readonly homeFaqs = [
+    {
+      question: 'What is HostCompare and how does it help me?',
+      answer:
+        'HostCompare is an independent web hosting and domain comparison platform. We collect, analyze, and present verified plan specifications, introductory vs renewal pricing, server architectures, and customer support channels so you can choose the right host for your project with confidence.',
+    },
+    {
+      question: 'How are hosting providers compared and scored on HostCompare?',
+      answer:
+        'Every provider is evaluated using standardized criteria: server software (LiteSpeed vs Apache vs Nginx), storage technology (NVMe vs SATA), uptime track record, backup and restoration policies, customer support availability, and pricing transparency. Providers cannot pay to alter their scores.',
+    },
+    {
+      question: 'What is the main difference between Shared, VPS, and Cloud hosting?',
+      answer:
+        'Shared hosting runs multiple sites on a single server, making it affordable for beginners. VPS hosting partitions a physical server into isolated virtual machines with dedicated CPU and RAM. Cloud hosting pools resources across a network of clustered servers, providing high availability and dynamic scalability.',
+    },
+    {
+      question: 'Why do hosting renewal prices often increase after the first term?',
+      answer:
+        'Hosting companies offer deep promotional discounts for the first 1 to 4 years to attract new customers. Once that initial term ends, plans renew at standard regular rates. HostCompare clearly displays both promotional and renewal rates on all plan comparisons.',
+    },
+    {
+      question: 'How does HostCompare earn revenue?',
+      answer:
+        'We earn referral commissions when visitors click outbound links and purchase hosting plans from our partners, and we display non-intrusive advertisements. These commercial arrangements never determine editorial ratings, rankings, or review conclusions.',
+    },
   ];
 
   featuredProviders = signal<HostingProvider[]>([]);
@@ -85,18 +145,20 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.seo.setPage({
-      title: 'Compare Web Hosting & Domains Before You Buy',
+      title: 'Web Hosting Comparison and Guides | HostCompare',
       description:
-        'Compare hosting providers, plans, pricing, features and performance to find the right hosting for your website. Independent comparisons, a hosting finder and editorial reviews.',
+        'Compare web hosting providers, VPS, cloud plans, pricing, and features side by side. Independent comparisons, verified renewal rates, and educational hosting guides.',
       path: '/',
     });
+
+    this.seo.setJsonLd('home-faq-jsonld', this.seo.buildFaqJsonLd(this.homeFaqs));
 
     this.hosting.getProviders().subscribe((providers) => {
       const sorted = this.hosting.sortProviders(providers, 'popularity');
       this.featuredProviders.set(sorted.slice(0, 8));
     });
 
-    const popular = this.comparisons.getPopularComparisons(5);
+    const popular = this.comparisons.getPopularComparisons(6);
     this.popularComparisons.set(
       popular.map((comparison) => ({
         comparison,

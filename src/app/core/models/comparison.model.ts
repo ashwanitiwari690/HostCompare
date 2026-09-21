@@ -30,6 +30,6 @@ export interface Comparison {
   relatedGuideSlugs: string[];
   relatedComparisonSlugs: string[];
   popularity: number;
-  isMockData: true;
+  isMockData?: boolean;
   dataUpdated: string;
 }

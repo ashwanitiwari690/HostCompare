@@ -22,5 +22,5 @@ export interface HostingPlan {
   ram?: string;
   recommended?: boolean;
   affiliateUrl?: string;
-  isMockData: true;
+  isMockData?: boolean;
 }

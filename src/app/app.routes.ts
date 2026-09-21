@@ -65,6 +65,18 @@ export const routes: Routes = [
     loadComponent: () => import('./features/guides/pages/guide-detail/guide-detail.component').then((m) => m.GuideDetailComponent),
   },
   {
+    path: 'glossary',
+    loadComponent: () => import('./features/glossary/pages/glossary-list/glossary-list.component').then((m) => m.GlossaryListComponent),
+  },
+  {
+    path: 'glossary/:slug',
+    loadComponent: () => import('./features/glossary/pages/glossary-detail/glossary-detail.component').then((m) => m.GlossaryDetailComponent),
+  },
+  {
+    path: 'methodology',
+    loadComponent: () => import('./features/methodology/pages/methodology.component').then((m) => m.MethodologyComponent),
+  },
+  {
     path: 'search',
     loadComponent: () => import('./features/search/pages/search-results.component').then((m) => m.SearchResultsComponent),
   },

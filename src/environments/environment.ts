@@ -9,4 +9,8 @@ export const environment = {
   // disable the widget entirely.
   earnivoApiBaseUrl: 'https://api.admobility.in/api',
   earnivoApiKey: 'ak_98cafee3d3d15bb00c53ae82d15cbb26a16a58892bdfdb58',
+
+  siteUrl: 'https://host-compare.vercel.app',
+  contactEmail: 'ashwini12tiwari@gmail.com',
+  adsensePublisherId: 'pub-2030586584805301',
 };

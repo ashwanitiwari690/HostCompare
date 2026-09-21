@@ -22,13 +22,14 @@ interface NavLink {
 })
 export class HeaderComponent {
   readonly navLinks: NavLink[] = [
+    { label: 'Home', path: '/' },
     { label: 'Hosting', path: '/hosting' },
-    { label: 'WordPress', path: '/wordpress-hosting' },
-    { label: 'VPS', path: '/vps' },
-    { label: 'Domains', path: '/domains' },
     { label: 'Comparisons', path: '/compare' },
-    { label: 'Reviews', path: '/reviews' },
     { label: 'Guides', path: '/guides' },
+    { label: 'Glossary', path: '/glossary' },
+    { label: 'Methodology', path: '/methodology' },
+    { label: 'About', path: '/about' },
+    { label: 'Contact', path: '/contact' },
   ];
 
   readonly themeOrder: Theme[] = ['light', 'dark', 'system'];
