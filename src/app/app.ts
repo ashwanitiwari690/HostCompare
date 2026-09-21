@@ -22,17 +22,17 @@ export class App implements OnInit {
       '@context': 'https://schema.org',
       '@type': 'Organization',
       name: 'HostCompare',
-      url: 'https://www.hostcompare.example',
-      description: 'Independent hosting and domain comparison platform.',
+      url: 'https://host-compare.vercel.app',
+      description: 'Independent hosting and domain comparison and educational platform.',
     });
     this.seo.setJsonLd('website-jsonld', {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       name: 'HostCompare',
-      url: 'https://www.hostcompare.example',
+      url: 'https://host-compare.vercel.app',
       potentialAction: {
         '@type': 'SearchAction',
-        target: 'https://www.hostcompare.example/search?q={search_term_string}',
+        target: 'https://host-compare.vercel.app/search?q={search_term_string}',
         'query-input': 'required name=search_term_string',
       },
     });

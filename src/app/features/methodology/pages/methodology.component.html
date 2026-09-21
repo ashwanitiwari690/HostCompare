@@ -1,0 +1,124 @@
+<div class="container methodology-hero">
+  <app-breadcrumb [items]="[{ label: 'Home', path: '/' }, { label: 'Methodology' }]" />
+  <span class="section__eyebrow">Editorial Standards & Research</span>
+  <h1>Our Hosting Comparison Methodology</h1>
+  <p class="methodology-hero__lead">
+    At HostCompare, our objective is to provide clear, verifiable, and transparent hosting evaluations.
+    Rather than declaring arbitrary "number one" hosts, we analyze how hosting plans actually perform,
+    what they cost over time, and which use cases they genuinely serve.
+  </p>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__eyebrow">Core Principles</span>
+      <h2 class="section__title">How We Evaluate Web Hosting Providers</h2>
+      <p class="section__subtitle">Every provider featured on HostCompare is evaluated using standardized, publicly verifiable criteria.</p>
+    </div>
+
+    <div class="criteria-grid">
+      <div class="criteria-card card">
+        <div class="criteria-card__header">
+          <div class="criteria-card__icon"><app-icon name="scale" [size]="24" /></div>
+          <h3>1. Pricing Transparency &amp; Renewal Spikes</h3>
+        </div>
+        <p>
+          The web hosting industry is notorious for steep promotional pricing discounts that renew at two to four times the introductory rate.
+          We document both introductory rates and standard renewal rates, required commitment lengths (e.g., 12 months vs 48 months), and hidden fees such as domain renewal markups or checkout upsells.
+        </p>
+      </div>
+
+      <div class="criteria-card card">
+        <div class="criteria-card__header">
+          <div class="criteria-card__icon"><app-icon name="server" [size]="24" /></div>
+          <h3>2. Server Architecture &amp; Caching</h3>
+        </div>
+        <p>
+          We analyze underlying web server software (LiteSpeed Enterprise, Nginx reverse proxy, Apache), hardware storage types (NVMe SSD vs standard SATA SSD), operating systems, and server-side caching modules (Redis, Memcached, OPcache, LiteSpeed Cache).
+        </p>
+      </div>
+
+      <div class="criteria-card card">
+        <div class="criteria-card__header">
+          <div class="criteria-card__icon"><app-icon name="shield" [size]="24" /></div>
+          <h3>3. Security &amp; Isolation</h3>
+        </div>
+        <p>
+          We verify the inclusion of automated SSL/TLS certificates (e.g., Let's Encrypt), web application firewalls (WAF), account isolation (such as CloudLinux CageFS on shared environments), DDoS protection, and malware scanning tools.
+        </p>
+      </div>
+
+      <div class="criteria-card card">
+        <div class="criteria-card__header">
+          <div class="criteria-card__icon"><app-icon name="server" [size]="24" /></div>
+          <h3>4. Backup Frequency &amp; Restoration</h3>
+        </div>
+        <p>
+          Backups are critical disaster recovery mechanisms. We document whether automated backups are daily or weekly, how long snapshots are retained, and whether one-click restoration is free or locked behind paid premium tiers.
+        </p>
+      </div>
+
+      <div class="criteria-card card">
+        <div class="criteria-card__header">
+          <div class="criteria-card__icon"><app-icon name="info" [size]="24" /></div>
+          <h3>5. Customer Support Channels</h3>
+        </div>
+        <p>
+          We track available communication channels (24/7 live chat, ticket systems, phone assistance), documentation quality, knowledge base depth, and whether support agents provide real technical assistance or script-driven responses.
+        </p>
+      </div>
+
+      <div class="criteria-card card">
+        <div class="criteria-card__header">
+          <div class="criteria-card__icon"><app-icon name="monitor" [size]="24" /></div>
+          <h3>6. Control Panels &amp; Usability</h3>
+        </div>
+        <p>
+          From industry standards like cPanel and Plesk to proprietary interfaces like Hostinger's hPanel or Cloudways' server manager, we evaluate usability for non-technical beginners as well as access to advanced developer tools like SSH, Git, and WP-CLI.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container container--narrow">
+    <div class="section__header">
+      <span class="section__eyebrow">Data Integrity</span>
+      <h2 class="section__title">Data Collection &amp; Review Cycle</h2>
+    </div>
+    <div class="content-block card">
+      <h3>Where Our Data Comes From</h3>
+      <p>
+        We collect plan specifications, resource allocations, data center locations, money-back guarantees, and pricing terms directly from provider published documentation, service level agreements (SLAs), and official terms of service.
+      </p>
+      <h3>Update Frequency</h3>
+      <p>
+        Hosting providers regularly adjust introductory discounts and plan features. Our editorial team reviews provider profiles and plan tables on a routine cycle (minimum quarterly audits) and updates provider listings whenever major pricing or infrastructure shifts occur.
+        Every provider detail page explicitly indicates the date when plan information was last verified.
+      </p>
+      <h3>Affiliate Transparency &amp; Editorial Independence</h3>
+      <p>
+        HostCompare participates in affiliate referral programs. When you click a link and purchase a hosting service, we may receive a commission.
+        However, <strong>affiliate partnerships do not influence our editorial ratings or recommendations</strong>.
+        We regularly highlight cons, renewal pricing hikes, and limitations for providers with whom we have commercial relationships. Providers cannot purchase higher ratings or altered review conclusions.
+      </p>
+      <h3>Reporting Inaccurate Information</h3>
+      <p>
+        If you spot outdated pricing, changed plan features, or an inaccurate specification, we welcome your feedback.
+        Please email our editorial team directly at <a href="mailto:ashwini12tiwari@gmail.com">ashwini12tiwari@gmail.com</a> with the URL and details, and our editors will investigate and update the content promptly.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--narrow">
+    <div class="section__header">
+      <span class="section__eyebrow">Frequently Asked Questions</span>
+      <h2 class="section__title">Methodology FAQs</h2>
+    </div>
+    <app-faq-accordion [items]="faqs" />
+  </div>
+</section>

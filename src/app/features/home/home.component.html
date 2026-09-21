@@ -1,31 +1,55 @@
+<!-- Hero Section with clear H1 & Purpose -->
 <section class="hero">
   <div class="container hero__inner">
     <div class="hero__brand">
       <app-logo-mark [size]="52" />
       <span class="hero__brand-name">HostCompare</span>
     </div>
-    <span class="section__eyebrow">Compare Hosting. Choose Better.</span>
-    <h1>Compare Web Hosting &amp; Domains Before You Buy</h1>
+    <span class="section__eyebrow">Independent Comparisons &amp; Technical Guides</span>
+    <h1>Web Hosting Comparison and Guides</h1>
     <p class="hero__subtitle">
-      Compare hosting providers, plans, pricing, features and performance to find the right hosting for your website.
+      HostCompare helps website creators, developers, and businesses evaluate web hosting providers, server specifications,
+      promotional vs. renewal pricing, and uptime reliability. Compare plans side by side and choose the right infrastructure with confidence.
     </p>
 
     <div class="hero__search">
-      <app-search-box placeholder="Search hosting, domains, providers..." (search)="onHeroSearch($event)" />
+      <app-search-box placeholder="Search hosting providers, features, guides..." (search)="onHeroSearch($event)" />
     </div>
 
     <div class="hero__ctas">
       <a routerLink="/hosting-finder" class="btn btn--primary">Find My Hosting</a>
-      <a routerLink="/compare" class="btn btn--outline">Compare Hosting</a>
+      <a routerLink="/compare" class="btn btn--outline">Compare Providers</a>
+      <a routerLink="/methodology" class="btn btn--outline">Our Methodology</a>
     </div>
   </div>
 </section>
 
+<!-- 1. Featured Hosting Comparisons -->
 <section class="section">
   <div class="container">
     <div class="section__header">
-      <span class="section__eyebrow">Categories</span>
-      <h2 class="section__title">Popular Hosting Categories</h2>
+      <span class="section__eyebrow">Head to Head</span>
+      <h2 class="section__title">1. Featured Hosting Comparisons</h2>
+      <p class="section__subtitle">Direct technical comparisons between popular hosting providers, analyzing architecture, renewal pricing, and support.</p>
+    </div>
+    <div class="comparison-grid">
+      @for (item of popularComparisons(); track item.comparison.slug) {
+        <app-comparison-card [comparison]="item.comparison" [providerA]="item.a" [providerB]="item.b" />
+      }
+    </div>
+    <div class="section__cta">
+      <a routerLink="/compare" class="btn btn--outline">View All Head-to-Head Comparisons &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Hosting Categories -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__eyebrow">Hosting Types</span>
+      <h2 class="section__title">2. Hosting Categories</h2>
+      <p class="section__subtitle">Explore hosting architectures tailored to different website requirements, from entry-level shared servers to high-performance cloud clusters.</p>
     </div>
     <div class="category-grid">
       @for (category of categories; track category.id) {
@@ -39,12 +63,13 @@
   </div>
 </section>
 
-<section class="section section--alt">
+<!-- 3. Popular Hosting Providers -->
+<section class="section">
   <div class="container">
     <div class="section__header">
-      <span class="section__eyebrow">Editorial Picks</span>
-      <h2 class="section__title">Featured Providers</h2>
-      <p class="section__subtitle">A snapshot of well-known hosting providers. Ratings are editorial; pricing is sample data — always confirm current pricing before buying.</p>
+      <span class="section__eyebrow">Evaluated Providers</span>
+      <h2 class="section__title">3. Popular Hosting Providers</h2>
+      <p class="section__subtitle">Verified provider profiles featuring introductory pricing, standard renewal fees, key features, and independent editorial analysis.</p>
     </div>
     <div class="provider-grid">
       @for (provider of featuredProviders(); track provider.id) {
@@ -52,58 +77,78 @@
       }
     </div>
     <div class="section__cta">
-      <a routerLink="/hosting" class="btn btn--outline">View All Hosting Providers</a>
+      <a routerLink="/hosting" class="btn btn--outline">Browse All 11 Verified Providers &rarr;</a>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <div class="section__header">
-      <span class="section__eyebrow">Head to Head</span>
-      <h2 class="section__title">Popular Comparisons</h2>
-    </div>
-    <div class="comparison-grid">
-      @for (item of popularComparisons(); track item.comparison.slug) {
-        <app-comparison-card [comparison]="item.comparison" [providerA]="item.a" [providerB]="item.b" />
-      }
-    </div>
-  </div>
-</section>
-
+<!-- 4. How We Compare Hosting -->
 <section class="section section--alt">
   <div class="container">
     <div class="section__header">
-      <span class="section__eyebrow">Use Cases</span>
-      <h2 class="section__title">Best Hosting For</h2>
+      <span class="section__eyebrow">Editorial Rigor</span>
+      <h2 class="section__title">4. How We Compare Hosting</h2>
+      <p class="section__subtitle">Our objective evaluation methodology is publicly documented to ensure trust and transparency.</p>
     </div>
-    <div class="best-for-grid">
-      @for (item of bestForItems; track item.label) {
-        <a [routerLink]="item.path" class="best-for-chip">
-          <app-icon [name]="item.icon" [size]="18" />
-          <span>{{ item.label }}</span>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-card__icon"><app-icon name="scale" [size]="22" /></div>
+        <h3>Renewal Pricing Audit</h3>
+        <p>We reveal the full cost of ownership by distinguishing promotional introductory discounts from long-term renewal rates.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card__icon"><app-icon name="server" [size]="22" /></div>
+        <h3>Hardware &amp; Server Stack</h3>
+        <p>We verify server technologies: NVMe SSD storage, LiteSpeed vs Apache vs Nginx engines, and server-level caching tools.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card__icon"><app-icon name="shield" [size]="22" /></div>
+        <h3>Security &amp; Backups</h3>
+        <p>We inspect automated SSL/TLS integration, firewall isolation (CloudLinux CageFS), and automated backup frequency and restore fees.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card__icon"><app-icon name="scale" [size]="22" /></div>
+        <h3>Editorial Independence</h3>
+        <p>Affiliate relationships never dictate our rankings or scores. Providers cannot pay for higher ratings or altered reviews.</p>
+      </div>
+    </div>
+    <div class="section__cta">
+      <a routerLink="/methodology" class="btn btn--primary">Read Our Full Comparison Methodology &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Hosting Features Explained -->
+<section class="section">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__eyebrow">Technical Glossary</span>
+      <h2 class="section__title">5. Hosting Features Explained</h2>
+      <p class="section__subtitle">Understand the critical technical specifications before choosing a plan.</p>
+    </div>
+    <div class="why-grid">
+      @for (item of featuresExplained; track item.title) {
+        <a [routerLink]="item.link" class="why-card card-link">
+          <div class="why-card__icon"><app-icon [name]="item.icon" [size]="22" /></div>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.summary }}</p>
+          <span class="text-primary text-sm font-semibold">Explore concept &rarr;</span>
         </a>
       }
     </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <div class="section__header">
-      <span class="section__eyebrow">Domains</span>
-      <h2 class="section__title">Find the Perfect Domain Name</h2>
-      <p class="section__subtitle">Search domain availability and compare registrar pricing before you buy.</p>
+    <div class="section__cta">
+      <a routerLink="/glossary" class="btn btn--outline">Browse Complete Hosting Glossary &rarr;</a>
     </div>
-    <app-domain-search-widget />
   </div>
 </section>
 
+<!-- 6. Hosting Guides -->
 <section class="section section--alt">
   <div class="container">
     <div class="section__header">
-      <span class="section__eyebrow">Learn</span>
-      <h2 class="section__title">Latest Guides</h2>
+      <span class="section__eyebrow">Educational Resources</span>
+      <h2 class="section__title">6. Hosting Guides &amp; Tutorials</h2>
+      <p class="section__subtitle">Step-by-step guidance on choosing hosting, configuring DNS, migrating WordPress, and optimizing speed.</p>
     </div>
     <div class="guide-grid">
       @for (guide of latestGuides(); track guide.slug) {
@@ -111,47 +156,79 @@
       }
     </div>
     <div class="section__cta">
-      <a routerLink="/guides" class="btn btn--outline">Browse All Guides</a>
+      <a routerLink="/guides" class="btn btn--outline">Read All 19 Hosting Guides &rarr;</a>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <div class="section__header">
-      <span class="section__eyebrow">Why HostCompare</span>
-      <h2 class="section__title">Built to Help You Decide, Not Just to List Providers</h2>
-    </div>
-    <div class="why-grid">
-      @for (item of whyItems; track item.title) {
-        <div class="why-card">
-          <div class="why-card__icon"><app-icon [name]="item.icon" [size]="22" /></div>
-          <h3>{{ item.title }}</h3>
-          <p>{{ item.description }}</p>
-        </div>
-      }
-    </div>
-  </div>
-</section>
-
-<section class="section section--alt">
+<!-- Reserved compliant Ad placement -->
+<section class="section section--tight">
   <div class="container container--narrow">
     <app-ad-rectangle />
   </div>
 </section>
 
-<section class="section newsletter">
-  <div class="container container--narrow newsletter__inner">
-    <h2>Stay Updated on Hosting Deals &amp; Guides</h2>
-    <p>Join our newsletter for new comparisons, guides and hosting tips. No spam.</p>
-    @if (!newsletterSubmitted()) {
-      <form class="newsletter__form" (submit)="onNewsletterSubmit($event)">
-        <input type="email" required placeholder="you@example.com" [(ngModel)]="newsletterEmail" name="newsletterEmail" />
-        <button type="submit" class="btn btn--primary">Subscribe</button>
-      </form>
-      <p class="newsletter__note">This form is frontend-only for now; email delivery requires backend integration.</p>
-    } @else {
-      <p class="newsletter__success">Thanks for subscribing! (This is a demo confirmation — no email was actually sent.)</p>
-    }
+<!-- 7. Frequently Asked Questions -->
+<section class="section">
+  <div class="container container--narrow">
+    <div class="section__header">
+      <span class="section__eyebrow">Common Questions</span>
+      <h2 class="section__title">7. Frequently Asked Questions</h2>
+      <p class="section__subtitle">Answers to fundamental questions about web hosting, pricing, and how HostCompare operates.</p>
+    </div>
+    <app-faq-accordion [items]="homeFaqs" />
+  </div>
+</section>
+
+<!-- 8. About Host Compare & 9. Contact -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="home-about-grid">
+      <div class="card home-about-card">
+        <span class="section__eyebrow">About HostCompare</span>
+        <h2>8. About HostCompare</h2>
+        <p>
+          HostCompare was established to bring clarity and transparency to the web hosting market. We believe website owners deserve
+          unvarnished facts: verified plan limits, accurate renewal prices, and clear pros and cons.
+        </p>
+        <p>
+          We test and document hosting architectures, research provider infrastructure, and break down complex technical topics so you
+          can choose hosting that matches your real-world needs.
+        </p>
+        <a routerLink="/about" class="btn btn--outline">Learn More About Us &rarr;</a>
+      </div>
+
+      <div class="card home-contact-card">
+        <span class="section__eyebrow">Get in Touch</span>
+        <h2>9. Contact &amp; Corrections</h2>
+        <p>
+          Spot outdated pricing or an inaccurate specification? Have a question regarding our evaluation methodology?
+          Our editorial team welcomes direct communication.
+        </p>
+        <div class="contact-box">
+          <p><strong>Editorial Email:</strong> <a href="mailto:ashwini12tiwari@gmail.com">ashwini12tiwari@gmail.com</a></p>
+          <p><strong>Response Time:</strong> Typically within 24–48 business hours.</p>
+        </div>
+        <a routerLink="/contact" class="btn btn--primary">Visit Contact Page &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. Legal & Disclosure Links -->
+<section class="section section--tight legal-bar">
+  <div class="container">
+    <div class="legal-bar__inner">
+      <p class="legal-bar__disclosure">
+        <strong>10. Transparency &amp; Disclosures:</strong>
+        HostCompare participates in affiliate marketing programs and may receive a referral commission when you purchase through our links.
+        This does not impact our editorial ratings or recommendations. For complete details, see our
+        <a routerLink="/affiliate-disclosure">Affiliate Disclosure</a>,
+        <a routerLink="/privacy-policy">Privacy Policy</a>,
+        <a routerLink="/terms">Terms of Service</a>,
+        <a routerLink="/disclaimer">Disclaimer</a>, and
+        <a routerLink="/cookie-policy">Cookie Policy</a>.
+      </p>
+    </div>
   </div>
 </section>

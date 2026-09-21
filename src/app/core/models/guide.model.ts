@@ -39,5 +39,5 @@ export interface Guide {
   relatedProviderIds: string[];
   relatedComparisonSlugs: string[];
   faqs: GuideFaq[];
-  isMockData: true;
+  isMockData?: boolean;
 }

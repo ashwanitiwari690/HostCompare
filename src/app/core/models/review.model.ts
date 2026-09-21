@@ -18,5 +18,5 @@ export interface Review {
   author: string;
   publishedDate: string;
   updatedDate: string;
-  isMockData: true;
+  isMockData?: boolean;
 }

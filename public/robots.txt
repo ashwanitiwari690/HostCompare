@@ -1,4 +1,13 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.hostcompare.example/sitemap.xml
+User-agent: Googlebot
+Allow: /
+
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: Google-Display-Ads-Bot
+Allow: /
+
+Sitemap: https://host-compare.vercel.app/sitemap.xml

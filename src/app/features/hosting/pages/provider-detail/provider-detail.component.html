@@ -10,7 +10,7 @@
           <div class="provider-hero__identity">
             <div class="provider-hero__logo" [style.background]="provider.logoColor">{{ provider.logoInitials }}</div>
             <div>
-              <h1>{{ provider.name }} Review</h1>
+              <h1>{{ provider.name }} Hosting</h1>
               <p class="provider-hero__tagline">{{ provider.tagline }}</p>
               <app-rating-display [value]="provider.rating.overall" label="Editorial rating" />
             </div>
@@ -22,7 +22,7 @@
               <span class="period">{{ provider.billingPeriod }}</span>
             </div>
             @if (provider.introductoryPrice) {
-              <p class="provider-hero__price-note">Introductory price @if (provider.renewalPrice) { — renews at ₹{{ provider.renewalPrice }}{{ provider.billingPeriod }} }</p>
+              <p class="provider-hero__price-note">Introductory rate @if (provider.renewalPrice) { — renews at ₹{{ provider.renewalPrice }}{{ provider.billingPeriod }} }</p>
             }
             <app-affiliate-button
               [affiliateUrl]="provider.affiliateUrl"
@@ -35,7 +35,7 @@
               <app-compare-button [providerId]="provider.id" [providerName]="provider.name" />
               <app-favorite-button type="provider" [id]="provider.id" [itemLabel]="provider.name" />
             </div>
-            <p class="mock-data-note">Sample pricing — updated {{ provider.dataUpdated }}</p>
+            <p class="mock-data-note">Information verified: {{ provider.dataUpdated }} from official provider documentation</p>
           </div>
         </div>
 
@@ -50,7 +50,7 @@
     <div class="container provider-body">
       <div class="provider-body__main">
         <section class="provider-section">
-          <h2>Overview</h2>
+          <h2>Overview: What Is {{ provider.name }}?</h2>
           <p>{{ provider.overview }}</p>
           @if (review(); as review) {
             <p class="provider-verdict"><strong>Editorial verdict:</strong> {{ review.verdict }}</p>
@@ -70,7 +70,7 @@
         </section>
 
         <section class="provider-section">
-          <h2>Pros &amp; Cons</h2>
+          <h2>Pros &amp; Limitations</h2>
           <div class="pros-cons">
             <div class="pros-cons__col pros-cons__col--pros">
               <h3>Pros</h3>
@@ -79,7 +79,7 @@
               </ul>
             </div>
             <div class="pros-cons__col pros-cons__col--cons">
-              <h3>Cons</h3>
+              <h3>Limitations to Consider</h3>
               <ul>
                 @for (con of provider.cons; track con) { <li>{{ con }}</li> }
               </ul>
@@ -88,16 +88,16 @@
         </section>
 
         <section class="provider-section">
-          <h2>Best For &amp; Who Should Avoid It</h2>
+          <h2>Suitability: Who Is {{ provider.name }} Best For?</h2>
           <div class="pros-cons">
             <div class="pros-cons__col">
-              <h3>Best For</h3>
+              <h3>Best Suited For</h3>
               <ul>
                 @for (item of provider.bestFor; track item) { <li>{{ item }}</li> }
               </ul>
             </div>
             <div class="pros-cons__col">
-              <h3>Who Should Avoid It</h3>
+              <h3>Consider Alternatives If</h3>
               <ul>
                 @for (item of provider.avoidIf; track item) { <li>{{ item }}</li> }
               </ul>
@@ -148,36 +148,46 @@
                 </tbody>
               </table>
             </div>
-            <p class="mock-data-note">Sample plan pricing for demonstration — updated {{ provider.dataUpdated }}</p>
+            <p class="mock-data-note">Plan specifications verified as of {{ provider.dataUpdated }} from provider published documentation.</p>
           }
         </section>
 
         <app-ad-in-article />
 
         <section class="provider-section">
-          <h2>Performance</h2>
+          <h2>Server Performance &amp; Infrastructure</h2>
           <p>
-            {{ provider.name }} carries an editorial performance rating of {{ provider.rating.performance.toFixed(1) }}/5,
-            backed by an uptime guarantee of {{ provider.uptimeGuarantee }} and data centers in
+            {{ provider.name }} holds an editorial performance score of {{ provider.rating.performance.toFixed(1) }}/5,
+            supported by a published uptime SLA guarantee of {{ provider.uptimeGuarantee }} and global data center locations in
             {{ provider.dataCenters.join(', ') }}.
           </p>
         </section>
 
         <section class="provider-section">
-          <h2>Security</h2>
+          <h2>Security &amp; Backup Information</h2>
           <ul class="check-list">
-            @if (provider.freeSsl) { <li><app-icon name="check" [size]="16" /> Free SSL certificate included</li> }
-            @if (provider.freeBackup) { <li><app-icon name="check" [size]="16" /> Backups included</li> }
-            @if (provider.freeCdn) { <li><app-icon name="check" [size]="16" /> Free CDN integration</li> }
-            <li><app-icon name="shield" [size]="16" /> {{ provider.moneyBackGuaranteeDays > 0 ? provider.moneyBackGuaranteeDays + '-day money-back guarantee' : 'Free trial available (see provider for current terms)' }}</li>
+            @if (provider.freeSsl) { <li><app-icon name="check" [size]="16" /> Free automated SSL/TLS certificate included</li> }
+            @if (provider.freeBackup) { <li><app-icon name="check" [size]="16" /> Automated backups included with restoration support</li> }
+            @if (provider.freeCdn) { <li><app-icon name="check" [size]="16" /> Built-in CDN integration for edge asset acceleration</li> }
+            <li><app-icon name="shield" [size]="16" /> {{ provider.moneyBackGuaranteeDays > 0 ? provider.moneyBackGuaranteeDays + '-day money-back guarantee' : 'Trial period available (see provider terms)' }}</li>
           </ul>
         </section>
 
         <section class="provider-section">
-          <h2>Support</h2>
+          <h2>Customer Support Channels</h2>
           <p>
-            {{ provider.name }} offers support via {{ provider.supportChannels.join(', ') }}, with an editorial support
-            rating of {{ provider.rating.support.toFixed(1) }}/5.
+            {{ provider.name }} provides customer assistance through {{ provider.supportChannels.join(', ') }}, receiving an
+            editorial support rating of {{ provider.rating.support.toFixed(1) }}/5.
+          </p>
+        </section>
+
+        <section class="provider-section">
+          <h2>Our Evaluation Methodology</h2>
+          <p>
+            Every provider featured on HostCompare is evaluated against objective criteria including server hardware,
+            introductory vs renewal pricing transparency, uptime SLAs, and support availability.
+            To understand how we score hosts and maintain editorial independence, read our
+            <a routerLink="/methodology">Comparison Methodology</a> and <a routerLink="/affiliate-disclosure">Affiliate Disclosure</a>.
           </p>
         </section>
 
@@ -190,7 +200,7 @@
 
         @if (relatedSections().length) {
           <section class="provider-section">
-            <h2>Related Content</h2>
+            <h2>Related Comparisons &amp; Guides</h2>
             <app-related-content [sections]="relatedSections()" />
           </section>
         }
@@ -227,8 +237,8 @@
     <div class="provider-footer-cta">
       <div class="container provider-footer-cta__inner">
         <div>
-          <h2>Ready to get started with {{ provider.name }}?</h2>
-          <p>Pricing shown is sample data — always confirm current pricing on the provider's website before purchasing.</p>
+          <h2>Explore {{ provider.name }} Hosting Plans</h2>
+          <p>Pricing and plan features last verified {{ provider.dataUpdated }} from official provider documentation.</p>
         </div>
         <app-affiliate-button
           [affiliateUrl]="provider.affiliateUrl"

@@ -24,7 +24,7 @@ export interface DomainRegistrar {
   cons: string[];
   bestFor: string[];
   supportedTlds: string[];
-  isMockData: true;
+  isMockData?: boolean;
   dataUpdated: string;
 }
 
@@ -36,7 +36,7 @@ export interface DomainExtension {
   currency: string;
   popularity: 'high' | 'medium' | 'low';
   description: string;
-  isMockData: true;
+  isMockData?: boolean;
 }
 
 export interface DomainSearchResult {

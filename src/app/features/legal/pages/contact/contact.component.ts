@@ -15,6 +15,7 @@ export class ContactComponent implements OnInit {
   private readonly fb = inject(FormBuilder);
   private readonly seo = inject(SeoService);
 
+  readonly contactEmail = 'ashwini12tiwari@gmail.com';
   submitted = signal(false);
 
   form = this.fb.nonNullable.group({

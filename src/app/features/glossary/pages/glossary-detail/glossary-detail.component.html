@@ -1,0 +1,73 @@
+@if (term(); as term) {
+  <article class="glossary-detail">
+    <header class="glossary-detail__hero">
+      <div class="container">
+        <app-breadcrumb
+          [items]="[
+            { label: 'Home', path: '/' },
+            { label: 'Glossary', path: '/glossary' },
+            { label: term.term }
+          ]"
+        />
+        <div class="glossary-detail__badge">
+          <app-badge variant="primary">{{ term.category }}</app-badge>
+        </div>
+        <h1>{{ term.term }} Explained</h1>
+        <p class="glossary-detail__lead">{{ term.shortDefinition }}</p>
+      </div>
+    </header>
+
+    <div class="container glossary-detail__content">
+      <section class="section section--tight">
+        <div class="card key-takeaways">
+          <h2>Key Takeaways</h2>
+          <ul class="check-list">
+            @for (item of term.keyTakeaways; track item) {
+              <li><app-icon name="check" [size]="18" /> <span>{{ item }}</span></li>
+            }
+          </ul>
+        </div>
+      </section>
+
+      <section class="section section--tight glossary-text">
+        <h2>In-Depth Technical Explanation</h2>
+        @for (paragraph of term.fullExplanation; track paragraph) {
+          <p>{{ paragraph }}</p>
+        }
+      </section>
+
+      <section class="section section--tight">
+        <div class="card context-box">
+          <h2>How We Evaluate {{ term.term }} on HostCompare</h2>
+          <p>{{ term.comparisonContext }}</p>
+        </div>
+      </section>
+
+      @if (term.faqs.length) {
+        <section class="section section--tight">
+          <h2>Frequently Asked Questions</h2>
+          <app-faq-accordion [items]="term.faqs" />
+        </section>
+      }
+
+      @if (relatedTerms().length) {
+        <section class="section section--tight">
+          <h2>Related Glossary Terms</h2>
+          <div class="related-terms-grid">
+            @for (rel of relatedTerms(); track rel.slug) {
+              <a [routerLink]="['/glossary', rel.slug]" class="related-term-chip card">
+                <strong>{{ rel.term }}</strong>
+                <span>{{ rel.shortDefinition }}</span>
+              </a>
+            }
+          </div>
+        </section>
+      }
+
+      <div class="glossary-detail__back">
+        <a routerLink="/glossary" class="btn btn--outline">&larr; Back to all Glossary terms</a>
+      </div>
+    </div>
+  </article>
+}
+

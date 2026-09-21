@@ -26,30 +26,33 @@ export class FooterComponent {
         { label: 'WordPress Hosting', path: '/wordpress-hosting' },
         { label: 'VPS Hosting', path: '/vps' },
         { label: 'Hosting Finder', path: '/hosting-finder' },
-        { label: 'Compare Providers', path: '/compare' },
-      ],
-    },
-    {
-      title: 'Domains',
-      links: [
         { label: 'Domain Search', path: '/domains' },
-        { label: 'Domain Comparison', path: '/domain-comparison' },
       ],
     },
     {
-      title: 'Resources',
+      title: 'Comparisons',
       links: [
-        { label: 'Reviews', path: '/reviews' },
-        { label: 'Guides', path: '/guides' },
-        { label: 'Search', path: '/search' },
-        { label: 'Favorites', path: '/favorites' },
+        { label: 'Compare Hosting', path: '/compare' },
+        { label: 'Domain Comparison', path: '/domain-comparison' },
+        { label: 'Hostinger vs Bluehost', path: '/compare/hostinger-vs-bluehost' },
+        { label: 'Hostinger vs SiteGround', path: '/compare/hostinger-vs-siteground' },
+        { label: 'DigitalOcean vs Vultr', path: '/compare/digitalocean-vs-vultr' },
+      ],
+    },
+    {
+      title: 'Education',
+      links: [
+        { label: 'Hosting Guides', path: '/guides' },
+        { label: 'Hosting Glossary', path: '/glossary' },
+        { label: 'Our Methodology', path: '/methodology' },
+        { label: 'Editorial Reviews', path: '/reviews' },
       ],
     },
     {
       title: 'Company',
       links: [
-        { label: 'About', path: '/about' },
-        { label: 'Contact', path: '/contact' },
+        { label: 'About Us', path: '/about' },
+        { label: 'Contact Us', path: '/contact' },
         { label: 'Affiliate Disclosure', path: '/affiliate-disclosure' },
       ],
     },

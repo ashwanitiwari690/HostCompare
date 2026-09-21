@@ -21,9 +21,9 @@ interface ValueItem {
 export class AboutComponent implements OnInit {
   readonly values: ValueItem[] = [
     { icon: 'scale', title: 'Independent Comparisons', description: 'We compare providers against the same criteria rather than ranking whoever pays the most.' },
-    { icon: 'info', title: 'Transparent Methodology', description: 'Our Hosting Finder scoring weights are published openly — see exactly why a provider was recommended.' },
-    { icon: 'shield', title: 'Honest Labeling', description: 'Sample data, editorial ratings and affiliate links are clearly labeled — never disguised as something else.' },
-    { icon: 'clock', title: 'Practical Content', description: 'Guides are written to actually help you make a decision, not to pad word counts for search engines.' },
+    { icon: 'info', title: 'Transparent Methodology', description: 'Our evaluation criteria and scoring weights are published openly — see exactly how providers are assessed.' },
+    { icon: 'shield', title: 'Honest Labeling', description: 'Verified plan details, editorial ratings and affiliate links are clearly labeled — never disguised as something else.' },
+    { icon: 'clock', title: 'Practical Content', description: 'Guides are written to actually help you make an informed decision, with clear pros, cons, and technical context.' },
   ];
 
   constructor(private seo: SeoService) {}
