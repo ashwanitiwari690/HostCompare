@@ -56,7 +56,7 @@ export class VpsHostingComponent implements OnInit {
 
   ngOnInit(): void {
     this.seo.setPage({
-      title: 'Best VPS Hosting Providers Compared',
+      title: 'VPS Hosting Comparison & Server Specs | HostCompare',
       description: 'Compare VPS hosting providers on CPU, RAM, storage, bandwidth, root access, managed support and pricing.',
       path: '/vps',
     });

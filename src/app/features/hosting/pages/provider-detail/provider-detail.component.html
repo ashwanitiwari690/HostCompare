@@ -35,7 +35,7 @@
               <app-compare-button [providerId]="provider.id" [providerName]="provider.name" />
               <app-favorite-button type="provider" [id]="provider.id" [itemLabel]="provider.name" />
             </div>
-            <p class="mock-data-note">Information verified: {{ provider.dataUpdated }} from official provider documentation</p>
+            <p class="data-verification-note">Information verified: {{ provider.dataUpdated }} from official provider documentation</p>
           </div>
         </div>
 
@@ -49,6 +49,15 @@
 
     <div class="container provider-body">
       <div class="provider-body__main">
+        <div class="data-disclosure-banner card">
+          <app-icon name="info" [size]="18" />
+          <div>
+            <strong>Information Source Notice:</strong> Plan specifications, technical features, and pricing are compiled from
+            <strong>{{ provider.name }}'s published documentation</strong> (verified {{ provider.dataUpdated }}).
+            Strengths, limitations, and use-case recommendations represent <strong>HostCompare's independent editorial analysis</strong>.
+          </div>
+        </div>
+
         <section class="provider-section">
           <h2>Overview: What Is {{ provider.name }}?</h2>
           <p>{{ provider.overview }}</p>
@@ -148,7 +157,20 @@
                 </tbody>
               </table>
             </div>
-            <p class="mock-data-note">Plan specifications verified as of {{ provider.dataUpdated }} from provider published documentation.</p>
+            @if (provider.introductoryPrice && provider.renewalPrice) {
+              <div class="renewal-notice card">
+                <div class="renewal-notice__header">
+                  <app-icon name="scale" [size]="18" />
+                  <strong>Renewal Pricing &amp; Long-Term Commitment</strong>
+                </div>
+                <p>
+                  The entry rate of {{ provider.currency === 'INR' ? '₹' : '' }}{{ provider.startingPrice }}{{ provider.billingPeriod }} is an introductory rate applicable to your initial invoice term.
+                  Plans renew automatically at standard regular rates ({{ provider.currency === 'INR' ? '₹' : '' }}{{ provider.renewalPrice }}{{ provider.billingPeriod }}).
+                  We recommend confirming the complete renewal schedule directly on {{ provider.name }}'s official website prior to purchasing.
+                </p>
+              </div>
+            }
+            <p class="data-verification-note">Plan specifications verified as of {{ provider.dataUpdated }} from provider published documentation.</p>
           }
         </section>
 
@@ -214,6 +236,7 @@
             @if (provider.headquarters) { <div><dt>Headquarters</dt><dd>{{ provider.headquarters }}</dd></div> }
             <div><dt>Money-back guarantee</dt><dd>{{ provider.moneyBackGuaranteeDays }} days</dd></div>
             <div><dt>Uptime guarantee</dt><dd>{{ provider.uptimeGuarantee }}</dd></div>
+            <div><dt>Official Website</dt><dd><a [href]="provider.websiteUrl" target="_blank" rel="noopener noreferrer">{{ provider.name }}</a></dd></div>
           </dl>
           <app-affiliate-button
             [affiliateUrl]="provider.affiliateUrl"

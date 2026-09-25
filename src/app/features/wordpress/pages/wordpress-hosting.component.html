@@ -1,6 +1,6 @@
 <div class="container page-header">
   <app-breadcrumb [items]="[{ label: 'Home', path: '/' }, { label: 'WordPress Hosting' }]" />
-  <h1>Best WordPress Hosting Providers</h1>
+  <h1>WordPress Hosting Comparison</h1>
   <p class="text-muted">
     Compare hosting providers built for WordPress — 1-click installs, caching, staging environments and security
     tooling — on pricing, performance and support.
@@ -10,8 +10,8 @@
 <section class="section section--tight">
   <div class="container">
     <div class="section__header">
-      <span class="section__eyebrow">Top Picks</span>
-      <h2 class="section__title">Top 3 WordPress Hosts Compared</h2>
+      <span class="section__eyebrow">Top Rated</span>
+      <h2 class="section__title">Featured WordPress Hosts Compared</h2>
     </div>
     <app-comparison-table [providers]="topProviders()" [plans]="plansByProvider()" [allowRemove]="false" />
   </div>

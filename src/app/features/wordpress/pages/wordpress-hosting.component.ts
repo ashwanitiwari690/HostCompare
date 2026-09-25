@@ -37,7 +37,7 @@ export class WordpressHostingComponent implements OnInit {
 
   ngOnInit(): void {
     this.seo.setPage({
-      title: 'Best WordPress Hosting Providers Compared',
+      title: 'WordPress Hosting Comparison & Reviews | HostCompare',
       description: 'Compare WordPress hosting providers on pricing, performance, staging environments, security and support.',
       path: '/wordpress-hosting',
     });

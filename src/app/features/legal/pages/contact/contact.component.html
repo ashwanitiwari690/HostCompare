@@ -33,7 +33,7 @@
 
           <div class="form-field">
             <label for="email">Your Email Address</label>
-            <input id="email" type="email" formControlName="email" placeholder="name@example.com" />
+            <input id="email" type="email" formControlName="email" placeholder="yourname@domain.com" />
             @if (f.email.invalid && f.email.touched) {
               <span class="form-error">Please enter a valid email address.</span>
             }
@@ -60,7 +60,7 @@
       } @else {
         <div class="contact-success card">
           <h2>Thank you for your message!</h2>
-          <p>We have received your inquiry. Our editorial team will review your message and respond to <strong>{{ contactEmail }}</strong> shortly.</p>
+          <p>We have received your inquiry. Our editorial team will review your message and respond to your provided email address shortly.</p>
           <button type="button" class="btn btn--outline" (click)="submitted.set(false)">Send Another Message</button>
         </div>
       }

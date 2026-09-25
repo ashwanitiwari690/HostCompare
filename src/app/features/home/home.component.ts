@@ -145,9 +145,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.seo.setPage({
-      title: 'Web Hosting Comparison and Guides | HostCompare',
+      title: 'Compare Web Hosting Providers | HostCompare',
       description:
-        'Compare web hosting providers, VPS, cloud plans, pricing, and features side by side. Independent comparisons, verified renewal rates, and educational hosting guides.',
+        'Compare hosting features, plans, pricing information, support options, and other important factors in one place. Independent analysis, verified renewal rates, and practical guides.',
       path: '/',
     });
 

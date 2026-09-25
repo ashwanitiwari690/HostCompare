@@ -9,7 +9,7 @@ export const REGISTRARS: DomainRegistrar[] = [
   {
     id: 'namecheap', slug: 'namecheap', name: 'Namecheap', logoInitials: 'N', logoColor: '#FF5722',
     description: 'Competitively priced domains with free WHOIS privacy on almost every TLD.',
-    websiteUrl: 'https://www.namecheap.com', affiliateUrl: '#', ctaText: 'Visit Namecheap',
+    websiteUrl: 'https://www.namecheap.com', ctaText: 'Visit Namecheap',
     registrationPriceFrom: 599, renewalPriceFrom: 999, transferPriceFrom: 699, currency: 'INR',
     whoisPrivacyFree: true, dnsManagement: true, emailForwarding: true, websiteBuilder: true, freeSsl: true,
     unlimitedSubdomains: true, supportChannels: ['24/7 Live Chat', 'Ticket'],
@@ -23,7 +23,7 @@ export const REGISTRARS: DomainRegistrar[] = [
   {
     id: 'godaddy', slug: 'godaddy', name: 'GoDaddy', logoInitials: 'G', logoColor: '#1BDBDB',
     description: "The world's largest registrar, with the widest selection of TLDs and add-ons.",
-    websiteUrl: 'https://www.godaddy.com', affiliateUrl: '#', ctaText: 'Visit GoDaddy',
+    websiteUrl: 'https://www.godaddy.com', ctaText: 'Visit GoDaddy',
     registrationPriceFrom: 99, renewalPriceFrom: 1299, transferPriceFrom: 799, currency: 'INR',
     whoisPrivacyFree: false, dnsManagement: true, emailForwarding: true, websiteBuilder: true, freeSsl: false,
     unlimitedSubdomains: true, supportChannels: ['24/7 Phone', 'Live Chat', 'Ticket'],
@@ -37,7 +37,7 @@ export const REGISTRARS: DomainRegistrar[] = [
   {
     id: 'cloudflare', slug: 'cloudflare-registrar', name: 'Cloudflare Registrar', logoInitials: 'CF', logoColor: '#F6821F',
     description: 'At-cost domain pricing with no markup, bundled with Cloudflare\'s DNS and security network.',
-    websiteUrl: 'https://www.cloudflare.com/products/registrar/', affiliateUrl: '#', ctaText: 'Visit Cloudflare',
+    websiteUrl: 'https://www.cloudflare.com/products/registrar/', ctaText: 'Visit Cloudflare',
     registrationPriceFrom: 799, renewalPriceFrom: 799, transferPriceFrom: 799, currency: 'INR',
     whoisPrivacyFree: true, dnsManagement: true, emailForwarding: false, websiteBuilder: false, freeSsl: true,
     unlimitedSubdomains: true, supportChannels: ['Ticket', 'Community Forum'],
@@ -51,7 +51,7 @@ export const REGISTRARS: DomainRegistrar[] = [
   {
     id: 'porkbun', slug: 'porkbun', name: 'Porkbun', logoInitials: 'PB', logoColor: '#EF5A28',
     description: 'A developer-favorite registrar known for low prices and a refreshingly simple dashboard.',
-    websiteUrl: 'https://porkbun.com', affiliateUrl: '#', ctaText: 'Visit Porkbun',
+    websiteUrl: 'https://porkbun.com', ctaText: 'Visit Porkbun',
     registrationPriceFrom: 499, renewalPriceFrom: 899, transferPriceFrom: 699, currency: 'INR',
     whoisPrivacyFree: true, dnsManagement: true, emailForwarding: true, websiteBuilder: false, freeSsl: true,
     unlimitedSubdomains: true, supportChannels: ['Ticket'],
@@ -65,7 +65,7 @@ export const REGISTRARS: DomainRegistrar[] = [
   {
     id: 'ionos', slug: 'ionos-domains', name: 'IONOS', logoInitials: 'IO', logoColor: '#003D8F',
     description: 'Domain registration bundled with IONOS\'s broader hosting and business tools.',
-    websiteUrl: 'https://www.ionos.com/domains', affiliateUrl: '#', ctaText: 'Visit IONOS',
+    websiteUrl: 'https://www.ionos.com/domains', ctaText: 'Visit IONOS',
     registrationPriceFrom: 49, renewalPriceFrom: 1099, transferPriceFrom: 699, currency: 'INR',
     whoisPrivacyFree: true, dnsManagement: true, emailForwarding: true, websiteBuilder: true, freeSsl: true,
     unlimitedSubdomains: true, supportChannels: ['24/7 Phone', 'Live Chat', 'Ticket'],
