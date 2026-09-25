@@ -21,14 +21,14 @@ export type AffiliateButtonSize = 'sm' | 'md' | 'lg';
     <a
       [href]="url()"
       target="_blank"
-      [rel]="isAffiliate() ? 'nofollow sponsored noopener' : 'noopener'"
+      [rel]="isAffiliate() ? 'nofollow sponsored noopener' : 'noopener noreferrer'"
       class="cta cta--{{ variant() }} cta--{{ size() }}"
       [attr.aria-label]="ctaText() + ' (opens in a new tab)'"
     >
       <span>{{ ctaText() }}</span>
       <app-icon name="external-link" [size]="size() === 'lg' ? 18 : 16" />
     </a>
-    @if (showDisclosure()) {
+    @if (showDisclosure() && isAffiliate()) {
       <span class="cta__disclosure">Affiliate link — <a routerLink="/affiliate-disclosure">why?</a></span>
     }
   `,
@@ -98,6 +98,17 @@ export class AffiliateButtonComponent {
   size = input<AffiliateButtonSize>('md');
   showDisclosure = input<boolean>(false);
 
-  isAffiliate = computed(() => !!this.affiliateUrl());
-  url = computed(() => this.affiliateUrl() || this.fallbackUrl());
+  isAffiliate = computed(() => {
+    const aff = this.affiliateUrl();
+    return !!aff && aff.trim() !== '' && aff !== '#' && !aff.startsWith('#');
+  });
+
+  url = computed(() => {
+    const aff = this.affiliateUrl();
+    if (aff && aff.trim() !== '' && aff !== '#' && !aff.startsWith('#')) {
+      return aff;
+    }
+    const fallback = this.fallbackUrl();
+    return fallback && fallback.trim() !== '' && fallback !== '#' ? fallback : '#';
+  });
 }

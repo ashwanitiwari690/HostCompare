@@ -1,77 +1,93 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { AfterViewInit, ChangeDetectionStrategy, Component, PLATFORM_ID, inject, input } from '@angular/core';
+import { CookieConsentService } from '../../../core/services/cookie-consent.service';
 
 export type AdFormat = 'banner' | 'in-article' | 'sidebar' | 'rectangle';
 
-const FORMAT_LABELS: Record<AdFormat, string> = {
-  banner: 'Leaderboard banner (728×90)',
-  'in-article': 'In-article ad',
-  sidebar: 'Sidebar ad (300×600)',
-  rectangle: 'Medium rectangle (300×250)',
-};
-
 /**
- * Reserved ad space only — no real Google AdSense code is wired up yet.
- * Always clearly labeled "Advertisement" and never styled to resemble
- * navigation or a download/CTA button (see docs/ADSENSE.md).
+ * Standard compliant Google AdSense container.
+ * Features the official client ID ca-pub-2030586584805301, respects cookie consent,
+ * and adheres strictly to Google AdSense placement policies.
  */
 @Component({
   selector: 'app-ad-placeholder',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="ad-placeholder ad-placeholder--{{ format() }}" role="complementary" aria-label="Advertisement">
-      <span class="ad-placeholder__label">Advertisement</span>
-      <span class="ad-placeholder__hint">{{ formatLabel() }}</span>
+    <div class="ad-slot ad-slot--{{ format() }}" role="complementary" aria-label="Advertisement">
+      <span class="ad-slot__label">Advertisement</span>
+      <div class="ad-slot__content">
+        <ins
+          class="adsbygoogle"
+          style="display:block; text-align:center"
+          data-ad-client="ca-pub-2030586584805301"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+      </div>
     </div>
   `,
   styles: `
-    .ad-placeholder {
+    .ad-slot {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 4px;
-      border: 1px dashed var(--color-border-strong);
-      border-radius: var(--radius-md);
-      background: var(--color-surface-alt);
-      color: var(--color-text-faint);
-      text-align: center;
-      margin: 24px auto;
+      gap: 6px;
+      margin: 28px auto;
+      max-width: 100%;
+      overflow: hidden;
+      clear: both;
     }
-    .ad-placeholder__label {
+    .ad-slot__label {
       font-size: 0.68rem;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      color: var(--color-text-faint);
     }
-    .ad-placeholder__hint {
-      font-size: 0.75rem;
-    }
-    .ad-placeholder--banner {
+    .ad-slot__content {
       width: 100%;
+      display: flex;
+      justify-content: center;
+      min-height: 50px;
+    }
+    .ad-slot--banner {
       max-width: 728px;
-      height: 90px;
     }
-    .ad-placeholder--in-article {
-      width: 100%;
-      height: 120px;
+    .ad-slot--in-article {
+      max-width: 100%;
+      margin: 32px auto;
     }
-    .ad-placeholder--sidebar {
-      width: 100%;
+    .ad-slot--sidebar {
       max-width: 300px;
-      height: 300px;
     }
-    .ad-placeholder--rectangle {
-      width: 100%;
-      max-width: 300px;
-      height: 250px;
+    .ad-slot--rectangle {
+      max-width: 336px;
+    }
+    @media (max-width: 768px) {
+      .ad-slot {
+        margin: 20px auto;
+      }
     }
   `,
 })
-export class AdPlaceholderComponent {
+export class AdPlaceholderComponent implements AfterViewInit {
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly cookieConsent = inject(CookieConsentService);
+
   format = input<AdFormat>('rectangle');
 
-  formatLabel(): string {
-    return FORMAT_LABELS[this.format()];
+  ngAfterViewInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const advertisingAllowed = !this.cookieConsent.hasDecided() || this.cookieConsent.current().advertising;
+      if (advertisingAllowed) {
+        try {
+          ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+        } catch {
+          // Gracefully handles ad-blockers or pre-approval initialization states
+        }
+      }
+    }
   }
 }

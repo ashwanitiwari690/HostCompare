@@ -19,7 +19,6 @@ export const PROVIDERS: HostingProvider[] = [
     overview:
       'Hostinger has built its reputation on pairing very low entry-level pricing with genuinely fast infrastructure. Its custom hPanel keeps things simple for first-time website owners, while LiteSpeed-powered servers and built-in caching keep pages loading quickly even on entry plans.',
     websiteUrl: 'https://www.hostinger.com',
-    affiliateUrl: '#',
     ctaText: 'Visit Hostinger',
     hostingTypes: ['shared', 'wordpress', 'vps', 'cloud'],
     startingPrice: 149,
@@ -68,7 +67,6 @@ export const PROVIDERS: HostingProvider[] = [
     overview:
       'Bluehost is one of the most recognized names in web hosting and has been an officially recommended WordPress.org host for over a decade. It focuses on a smooth WordPress setup experience with 1-click installs, though shoppers should watch for checkout upsells and renewal pricing.',
     websiteUrl: 'https://www.bluehost.com',
-    affiliateUrl: '#',
     ctaText: 'Visit Bluehost',
     hostingTypes: ['shared', 'wordpress', 'vps', 'dedicated'],
     startingPrice: 199,
@@ -117,7 +115,6 @@ export const PROVIDERS: HostingProvider[] = [
     overview:
       'SiteGround runs its hosting on Google Cloud infrastructure and layers on its own caching (SG Optimizer), security tooling and daily backups. It is consistently rated highly for support quality and page-load performance, though it sits at a higher price point than budget hosts.',
     websiteUrl: 'https://www.siteground.com',
-    affiliateUrl: '#',
     ctaText: 'Visit SiteGround',
     hostingTypes: ['shared', 'wordpress', 'cloud'],
     startingPrice: 399,
@@ -166,7 +163,6 @@ export const PROVIDERS: HostingProvider[] = [
     overview:
       'Namecheap is best known as a domain registrar, and its hosting plans extend that value focus with free WHOIS privacy, straightforward cPanel-based hosting, and no aggressive upselling at checkout.',
     websiteUrl: 'https://www.namecheap.com',
-    affiliateUrl: '#',
     ctaText: 'Visit Namecheap',
     hostingTypes: ['shared', 'wordpress', 'vps', 'reseller', 'email'],
     startingPrice: 169,
@@ -215,7 +211,6 @@ export const PROVIDERS: HostingProvider[] = [
     overview:
       'GoDaddy is the largest domain registrar in the world and pairs that scale with hosting, website builder and business tools under one account. It is a convenient one-stop option, though shoppers should expect frequent upsells and higher renewal pricing.',
     websiteUrl: 'https://www.godaddy.com',
-    affiliateUrl: '#',
     ctaText: 'Visit GoDaddy',
     hostingTypes: ['shared', 'wordpress', 'vps', 'dedicated', 'email'],
     startingPrice: 149,
@@ -264,7 +259,6 @@ export const PROVIDERS: HostingProvider[] = [
     overview:
       'DreamHost has operated independently since 1996 and stands out for its unusually long 97-day money-back guarantee and a custom control panel. It is a solid pick for developers and privacy-conscious users comfortable stepping outside the typical cPanel experience.',
     websiteUrl: 'https://www.dreamhost.com',
-    affiliateUrl: '#',
     ctaText: 'Visit DreamHost',
     hostingTypes: ['shared', 'wordpress', 'vps', 'cloud', 'dedicated'],
     startingPrice: 259,
@@ -313,7 +307,6 @@ export const PROVIDERS: HostingProvider[] = [
     overview:
       'A2 Hosting targets developers and performance-conscious users with its Turbo Boost server tier, root access on VPS plans, and support for multiple PHP and Node.js versions. Its anytime money-back guarantee also reduces the risk of trying it out.',
     websiteUrl: 'https://www.a2hosting.com',
-    affiliateUrl: '#',
     ctaText: 'Visit A2 Hosting',
     hostingTypes: ['shared', 'wordpress', 'vps', 'dedicated', 'reseller'],
     startingPrice: 229,
@@ -362,7 +355,6 @@ export const PROVIDERS: HostingProvider[] = [
     overview:
       'Cloudways does not run its own data centers; instead it provides a fully managed hosting layer on top of major cloud providers like AWS, Google Cloud, DigitalOcean and Vultr. This gives users cloud-grade performance with a managed stack, caching and monitoring, without needing to administer a server directly.',
     websiteUrl: 'https://www.cloudways.com',
-    affiliateUrl: '#',
     ctaText: 'Visit Cloudways',
     hostingTypes: ['cloud', 'wordpress'],
     startingPrice: 833,
@@ -410,7 +402,6 @@ export const PROVIDERS: HostingProvider[] = [
     overview:
       'IONOS (formerly 1&1) is one of the largest hosting companies in Europe, backed by its own extensive data center infrastructure. It frequently offers very low introductory pricing bundled with a free domain, though renewal pricing rises noticeably after the first term.',
     websiteUrl: 'https://www.ionos.com',
-    affiliateUrl: '#',
     ctaText: 'Visit IONOS',
     hostingTypes: ['shared', 'wordpress', 'vps', 'cloud', 'dedicated', 'email'],
     startingPrice: 99,
@@ -459,7 +450,6 @@ export const PROVIDERS: HostingProvider[] = [
     overview:
       'DigitalOcean is a developer-focused cloud infrastructure provider known for its "Droplets" (virtual servers), transparent hourly/monthly pricing, and an extensive library of community tutorials. It does not offer traditional managed shared hosting — it is built for users comfortable managing their own server.',
     websiteUrl: 'https://www.digitalocean.com',
-    affiliateUrl: '#',
     ctaText: 'Visit DigitalOcean',
     hostingTypes: ['vps', 'cloud'],
     startingPrice: 400,
@@ -507,7 +497,6 @@ export const PROVIDERS: HostingProvider[] = [
     overview:
       'Vultr competes directly with DigitalOcean in the developer cloud space, differentiating itself with one of the widest selections of global data center locations and flexible high-frequency compute instances billed by the hour.',
     websiteUrl: 'https://www.vultr.com',
-    affiliateUrl: '#',
     ctaText: 'Visit Vultr',
     hostingTypes: ['vps', 'cloud'],
     startingPrice: 250,

@@ -1,9 +1,8 @@
 import { Guide } from '../../../core/models';
 
 /**
- * Editorial guide articles (mock/sample content for development). Content is
- * structured as typed blocks (never raw HTML) so it can be rendered safely
- * and, later, swapped for a CMS-backed API without changing templates.
+ * Editorial guide articles providing educational walkthroughs on web hosting architectures and deployment.
+ * Content is structured as typed blocks (never raw HTML) so it can be rendered safely.
  */
 export const GUIDES: Guide[] = [
   {
@@ -97,7 +96,7 @@ export const GUIDES: Guide[] = [
     content: [
       { type: 'paragraph', text: 'One of the most common points of confusion for new website owners is the difference between a domain name and web hosting. They are two separate products that work together, and understanding the distinction avoids a lot of early confusion.' },
       { type: 'heading', level: 2, text: 'What is a domain name?', id: 'what-is-domain' },
-      { type: 'paragraph', text: 'A domain name (like example.com) is the human-readable address people type into a browser to reach your website. You "rent" a domain from a registrar on an annual basis — you never truly own it outright, only your registration to use it.' },
+      { type: 'paragraph', text: 'A domain name (such as yourwebsite.com) is the human-readable address people type into a browser to reach your website. You "rent" a domain from a registrar on an annual basis — you never truly own it outright, only your registration to use it.' },
       { type: 'heading', level: 2, text: 'What is web hosting?', id: 'what-is-hosting' },
       { type: 'paragraph', text: 'Web hosting is the actual computer (server) storage where your website\'s files, images and database live. When someone visits your domain, their browser is directed to your hosting server, which sends back the website content.' },
       { type: 'heading', level: 2, text: 'How they work together', id: 'how-they-work-together' },

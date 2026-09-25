@@ -1,12 +1,21 @@
 <div class="container methodology-hero">
   <app-breadcrumb [items]="[{ label: 'Home', path: '/' }, { label: 'Methodology' }]" />
-  <span class="section__eyebrow">Editorial Standards & Research</span>
+  <span class="section__eyebrow">Editorial Standards &amp; Research</span>
   <h1>Our Hosting Comparison Methodology</h1>
   <p class="methodology-hero__lead">
     At HostCompare, our objective is to provide clear, verifiable, and transparent hosting evaluations.
-    Rather than declaring arbitrary "number one" hosts, we analyze how hosting plans actually perform,
-    what they cost over time, and which use cases they genuinely serve.
+    Rather than declaring arbitrary "number one" hosts or making exaggerated claims, we compare hosting providers
+    using publicly available information such as hosting features, storage, bandwidth, SSL availability, backups,
+    support options, plan limitations, pricing structure, and other relevant factors.
   </p>
+  <div class="methodology-hero__notice card">
+    <app-icon name="info" [size]="20" />
+    <p>
+      <strong>Important Visitor Notice:</strong> Web hosting pricing, promotional discounts, and technical specifications
+      change frequently. While we conduct regular audits, visitors should always verify current pricing and feature terms
+      directly on the provider's official website before purchasing.
+    </p>
+  </div>
 </div>
 
 <section class="section">
@@ -114,6 +123,34 @@
 </section>
 
 <section class="section">
+  <div class="container container--narrow">
+    <div class="section__header">
+      <span class="section__eyebrow">Scoring Formula</span>
+      <h2 class="section__title">How HostCompare Editorial Ratings Are Calculated</h2>
+      <p class="section__subtitle">A clear breakdown of the standardized evaluation model behind our 1 to 5 star ratings.</p>
+    </div>
+    <div class="content-block card">
+      <p>
+        Every provider on HostCompare receives an overall editorial score calculated as a weighted composite of five objective evaluation pillars:
+      </p>
+      <ul>
+        <li><strong>Ease of Use (20%):</strong> Evaluates account setup clarity, control panel navigation (cPanel vs custom panels like hPanel/Site Tools), and 1-click installer accessibility for non-technical users.</li>
+        <li><strong>Performance Architecture (25%):</strong> Evaluates underlying server stack (LiteSpeed vs Apache vs Nginx), storage technology (NVMe SSD vs SATA), and built-in caching modules (Redis, OPcache, LiteSpeed Cache).</li>
+        <li><strong>Customer Support (20%):</strong> Evaluates 24/7 availability across live chat, phone, and ticketing, self-service documentation quality, and support responsiveness.</li>
+        <li><strong>Features &amp; Security (20%):</strong> Evaluates standard inclusions such as automated SSL/TLS certificates, backup frequency and restore conditions, CDN integration, and staging environments.</li>
+        <li><strong>Value for Money (15%):</strong> Evaluates the ratio between introductory pricing, mandatory long-term renewal rates, and resource quotas (storage, websites, bandwidth).</li>
+      </ul>
+      <p>
+        <strong>Overall Score Formula:</strong> (Ease of Use &times; 0.20) + (Performance &times; 0.25) + (Support &times; 0.20) + (Features &times; 0.20) + (Value &times; 0.15).
+      </p>
+      <p>
+        <strong>No Fabricated Testing:</strong> We do not claim synthetic server load benchmarks, simulated uptime measurements, or third-party customer surveys that have not been genuinely conducted. All ratings reflect standardized editorial analysis of published infrastructure and verified specifications.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
   <div class="container container--narrow">
     <div class="section__header">
       <span class="section__eyebrow">Frequently Asked Questions</span>
