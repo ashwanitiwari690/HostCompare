@@ -8,9 +8,9 @@ export const environment = {
   // confirm the visit and credit the visitor's wallet. Leave blank to
   // disable the widget entirely.
   earnivoApiBaseUrl: 'https://api.admobility.in/api',
-  earnivoApiKey: 'ak_d829cba309a1e6de739f3d29a26478428e7c7594f219d99e',
+  earnivoApiKey: 'ak_cfbf3ac878d96d5fe2c2efc462be596cd6c2d1ad09b69fde',
 
   siteUrl: 'https://host-compare.vercel.app',
-  contactEmail: 'ashwini12tiwari@gmail.com',
+  contactEmail: 'admobility.in@gmail.com',
   adsensePublisherId: 'pub-2030586584805301',
 };
